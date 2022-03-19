@@ -1,0 +1,83 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "java",
+        "name": "Launch Manager",
+        "request": "launch",
+        "mainClass": "Manager",
+        "projectName": "tem_3ee0a2b4"
+      },
+      {
+        "type": "java",
+        "name": "Launch SetStudent",
+        "request": "launch",
+        "mainClass": "SetStudent",
+        "projectName": "tem_3ee0a2b4"
+      },
+      {
+        "type": "java",
+        "name": "Launch Fee",
+        "request": "launch",
+        "mainClass": "Fee",
+        "projectName": "tem_3ee0a2b4"
+      },
+      {
+        "type": "java",
+        "name": "Launch Two",
+        "request": "launch",
+        "mainClass": "Two",
+        "projectName": "tem_3ee0a2b4"
+      },
+      {
+        "type": "java",
+        "name": "Launch gg",
+        "request": "launch",
+        "mainClass": "gg",
+        "projectName": "tem_3ee0a2b4"
+      },
+      {
+        "type": "java",
+        "name": "Launch Main",
+        "request": "launch",
+        "mainClass": "Main",
+        "projectName": "tem_3ee0a2b4"
+      },
+      {
+        "type": "java",
+        "name": "Launch Add",
+        "request": "launch",
+        "mainClass": "Add",
+        "projectName": "tem_3ee0a2b4"
+      },
+      {
+        "type": "java",
+        "name": "Launch HelloWorld",
+        "request": "launch",
+        "mainClass": "HelloWorld",
+        "projectName": "tem_3ee0a2b4"
+      },
+      {
+        "type": "java",
+        "name": "Launch Equivalence",
+        "request": "launch",
+        "mainClass": "Equivalence",
+        "projectName": "tem_3ee0a2b4"
+      },
+      {
+        "name": "(lldb) 启动",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "/test/test",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "$/test",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "lldb"
+      }
+    ]
+}
