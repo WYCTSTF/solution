@@ -3,22 +3,30 @@ import java.util.ArrayList;
 class person {
   String _name, _id;
   person(String name, String id) {
-    _name=name; _id=id;
+    _name = name;
+    _id = id;
   }
   ArrayList<String> _course = new ArrayList<String>();
-  void addCourse(String _class) {_course.add(_class);}
-  String askClass(int pos){return _course.get(pos-1);}
+  void addCourse(String _class) { _course.add(_class); }
+  String askClass(int pos) { return _course.get(pos - 1); }
 }
 
 class Teacher extends person {
   String _PersonnalRanks;
-  Teacher(String name, String id, String PersonnalRanks) { super(name, id); _PersonnalRanks=PersonnalRanks; }
+  Teacher(String name, String id, String PersonnalRanks) {
+    super(name, id);
+    _PersonnalRanks = PersonnalRanks;
+  }
 }
 
 class Student extends person {
   String _major;
   int _grade;
-  Student(String name, String id, int grade, String major) { super(name, id); _grade=grade;_major=major; }
+  Student(String name, String id, int grade, String major) {
+    super(name, id);
+    _grade = grade;
+    _major = major;
+  }
 }
 
 public class Main {
