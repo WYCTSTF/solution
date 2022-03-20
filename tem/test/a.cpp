@@ -7,10 +7,6 @@ int main() {
   for (int i = 0; i < n; i++)
     for (int j = 0; j < m; j++)
       cin >> a[i][j];
-  for (auto iter : a) {
-    for (auto it : iter)
-      cout << it << ' ';
-    cout << endl;
-  }
+
   return 0;
 }
