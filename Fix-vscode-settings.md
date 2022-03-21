@@ -4,7 +4,7 @@ tags:
   - 测试
   - 瞎搞
 categories: 杂项
----
+
 
 我原来以为这种trival的事情没有必要记录 直到今天晚上xjb摸快捷键的时候
 
@@ -13,6 +13,12 @@ categories: 杂项
 <!-- more -->
 
 ## 插件
+
+### CPP
+* C/C++ [饱受诟病]
+* C/C++ Compile Run
+* C++ Intellisense
+* Clang-Format
 
 ### Haskell相关
 * Hakell
@@ -34,10 +40,31 @@ categories: 杂项
 * Markdown All in One
 * Markdown PDF
 
+### 主题
+* Material Icon Theme
+* One Dark Pro
+* Github Theme
+* Community Material Theme
+* Atom One Dark Theme
 
-### 一些脚本
+### Python
+* Pylance
+* Python
+
+### 杂项
 * Code Runner
+* Visual Studio
+* indent-rainbow
+* Git Graph
+* Chinese(Simplified)
+* Brackets Light Pro
+* Bracket Pair Colorizer 2
+* Jupyter
+* Visual Studio IntelliCode
 
+### Java
+* Language Support for Java(TM) by Red Hat
+* Debugger for Java
 
 ## User Snippets
 
