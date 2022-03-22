@@ -1,4 +1,3 @@
-// NOI2014 起床困难综合症
 #include<cstdio>
 #include<string>
 #include<algorithm>
