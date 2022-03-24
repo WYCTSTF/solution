@@ -5,7 +5,7 @@
 #define min(a,b) (a<b?a:b)
 #define mp make_pair
 #define pb push_back
-#define fi first	
+#define fi first
 #define se second
 #define il inline
 #define rg register
@@ -22,12 +22,18 @@ const int MOD=998244353;
 const int mod=1e9+7;
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a; }
 // head
-#define int long long
-signed main() {
-	int tt; cin >> tt;
-	while (tt--) {
-		int n; cin >> n;
-
+int main() {
+	int tt;cin>>tt;
+	while(tt--){
+		int n;cin>>n;
+		int Max=-1,Min=INT_MAX,p1,p2;
+		for(int i=1;i<=n;i++) {
+			int tem;cin>>tem;
+			if(tem>Max) Max=tem,p1=i;
+			if(tem<Min) Min=tem,p2=i;
+		}
+		if(p1>p2) p1^=p2^=p1^=p2;
+		cout<<p1<<' '<<p2<<'\n';
 	}
 	return 0;
 }

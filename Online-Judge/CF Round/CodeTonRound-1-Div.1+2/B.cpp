@@ -5,7 +5,7 @@
 #define min(a,b) (a<b?a:b)
 #define mp make_pair
 #define pb push_back
-#define fi first	
+#define fi first
 #define se second
 #define il inline
 #define rg register
@@ -22,12 +22,17 @@ const int MOD=998244353;
 const int mod=1e9+7;
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a; }
 // head
-#define int long long
-signed main() {
-	int tt; cin >> tt;
-	while (tt--) {
-		int n; cin >> n;
-
+int main(){
+	int tt;cin>>tt;
+	while(tt--){
+		int n,k;cin>>n>>k;
+		vector a(n,0);
+		for(int i=0;i<n;i++) cin>>a[i];
+		set<int>s{a.begin(),a.end()};
+		bool flag=false;
+		for(auto it:s) if(s.find(it+k)!=s.end()) {flag=true; break;}
+		if(flag) puts("YES");
+		else puts("NO");
 	}
 	return 0;
 }
