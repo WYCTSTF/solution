@@ -1,13 +1,85 @@
 {
-  "files.associations": {
-    "vector": "cpp",
-    "iostream": "cpp",
-    "utility": "cpp",
-    "map": "cpp",
-    "queue": "cpp",
-    "__split_buffer": "cpp",
-    "deque": "cpp",
-    "list": "cpp",
-    "string": "cpp"
-  }
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "[html]": {
+      "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "git.confirmSync": false,
+  "editor.tabCompletion": "on",
+  "workbench.startupEditor": "newUntitledFile",
+  "files.autoSave": "onFocusChange",
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.saveAllFilesBeforeRun": true,
+  "code-runner.saveFileBeforeRun": true,
+  "python.insidersChannel": "off",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "vsicons.dontShowNewVersionMessage": true,
+  "editor.fontFamily": "chalkboard se",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "450",
+  "C_Cpp.errorSquiggles": "Enabled",
+  "terminal.integrated.gpuAcceleration": "off",
+  "workbench.colorTheme": "Eva Dark",
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.minimap.enabled": false,
+  "editor.inlayHints.fontFamily": "chalkboard se",
+  "debug.console.fontFamily": "chalkboard se",
+  "files.exclude": {
+      "**/.classpath": true,
+      "**/.project": true,
+      "**/.settings": true,
+      "**/.factorypath": true
+  },
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection":"automaticallyOverrodeDefaultValue",
+  "C_Cpp.default.cppStandard": "c++17",
+  "C_Cpp.default.cStandard": "c11",
+  "editor.codeLensFontFamily": "consolas",
+  "C_Cpp.vcFormat.wrap.preserveBlocks": "never",
+  "[c]": {
+      "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "editor.dragAndDrop": false,
+  "editor.foldingStrategy": "indentation",
+  "editor.guides.bracketPairs": true,
+  "editor.lineHeight": 18,
+  "editor.padding.bottom": 5,
+  "editor.renderLineHighlight": "gutter",
+  "editor.scrollBeyondLastLine": false,
+  "window.autoDetectHighContrast": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.tabSize": 2,
+  "editor.autoClosingQuotes": "never",
+  "editor.autoClosingDelete": "never",
+  "editor.autoClosingOvertype": "never",
+  "editor.autoClosingBrackets": "never",
+  "code-runner.defaultLanguage": "c++",
+  "code-runner.runInTerminal": true,
+  "[cpp]": {
+      "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "code-runner.executorMap": {
+      "cpp": "g++ $fullFileName -o $dir\"$fileNameWithoutExt\" -W -Wall -O2 -std=c++17 && $dir\"$fileNameWithoutExt\" < $dir\"in\" > $dir\"out\" && diff $dir\"out\" $dir\"stdout\" && rm -f $dir\"$fileNameWithoutExt\"",
+  },
+  "editor.fontSize": 14,
+  "bracket-pair-colorizer-2.depreciation-notice": false,
+  "editor.cursorStyle": "underline",
+  "editor.suggest.snippetsPreventQuickSuggestions": true,
+  "c-cpp-compile-run.cpp-flags": "-Wall -Wextra -std=c++17",
+  "editor.insertSpaces": false,
+  "editor.lineNumbers": "interval",
+  "editor.matchBrackets": "near",
+  "terminal.integrated.fontFamily": "consolas",
+  "editor.acceptSuggestionOnEnter": "off",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "[java]": {
+      "editor.defaultFormatter": "redhat.java"
+  },
+  "vscode_vibrancy.opacity": 0.3,
+"workbench.activityBar.visible": false,
+"files.associations": {
+    "random": "cpp"
+},
 }
