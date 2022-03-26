@@ -1,0 +1,1 @@
+{"name":"Local: heap","url":"/Users/syh/Documents/code/solution/heap.cpp","tests":[{"id":1648223480651,"input":"5\n1 2\n1 5\n2\n3\n2","output":"2\n5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/syh/Documents/code/solution/heap.cpp","group":"local","local":true}
