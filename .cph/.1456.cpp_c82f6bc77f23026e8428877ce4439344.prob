@@ -1,1 +1,0 @@
-{"name":"Local: 1456","url":"/Users/syh/Documents/code/solution/1456.cpp","tests":[{"id":1648210615269,"input":"4\n50 2\n10 1\n20 2\n30 1\n7\n20 1\n2 1\n10 3\n100 2\n8 2\n5 20\n50 10","output":"80\n185"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/syh/Documents/code/solution/1456.cpp","group":"local","local":true}

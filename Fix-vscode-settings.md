@@ -1,31 +1,17 @@
----
-title: My Visual Studio Code Settings
-tags:
-  - 测试
-  - 瞎搞
-categories: 杂项
-
-
-我原来以为这种trival的事情没有必要记录 直到今天晚上xjb摸快捷键的时候
-
-不小心按了 ⌥ ⇧ d 贴心的Sync把本地设置(和所有扩展)全部反向更新到了2 years ago...
-
-<!-- more -->
-
 ## 插件
 
 ### CPP
 * C/C++ [饱受诟病]
 * C/C++ Compile Run
 * C++ Intellisense
-* Clang-Format
+<!-- # * Clang-Format -->
 
-### Haskell相关
+<!-- ### Haskell相关
 * Hakell
-* Haskell Syntax Highlighting
+* Haskell Syntax Highlighting -->
 
-### Git相关
-* Git Graph
+<!-- ### Git相关
+* Git Graph -->
 
 ### Themes & 美化
 * Atom One Dark Theme
@@ -47,24 +33,24 @@ categories: 杂项
 * Community Material Theme
 * Atom One Dark Theme
 
-### Python
+<!-- ### Python
 * Pylance
-* Python
+* Python -->
 
 ### 杂项
-* Code Runner
+<!-- * Code Runner -->
 * Visual Studio
 * indent-rainbow
-* Git Graph
+<!-- * Git Graph -->
 * Chinese(Simplified)
 * Brackets Light Pro
 * Bracket Pair Colorizer 2
-* Jupyter
+<!-- * Jupyter -->
 * Visual Studio IntelliCode
 
-### Java
+<!-- ### Java
 * Language Support for Java(TM) by Red Hat
-* Debugger for Java
+* Debugger for Java -->
 
 ## User Snippets
 

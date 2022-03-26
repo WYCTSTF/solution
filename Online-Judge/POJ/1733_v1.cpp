@@ -30,7 +30,7 @@ int main() {
 			if((d[x]^d[y])!=query[i].ans){
 				printf("%d\n",i-1); return 0;
 			}
-		} else fa[p]=q;d[p]=d[x]^d[y]^query[i].ans;
+		} else fa[p]=q,d[p]=d[x]^d[y]^query[i].ans;
 	}
 	printf("%d\n",m);
 	return 0;

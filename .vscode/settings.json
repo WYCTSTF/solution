@@ -43,7 +43,7 @@
     "editor.dragAndDrop": false,
     "editor.foldingStrategy": "indentation",
     "editor.guides.bracketPairs": true,
-    "editor.lineHeight": 18,
+    "editor.lineHeight": 20,
     "editor.padding.bottom": 5,
     "editor.renderLineHighlight": "gutter",
     "editor.scrollBeyondLastLine": false,
@@ -63,7 +63,6 @@
     "code-runner.executorMap": {
         "cpp": "g++ $fullFileName -o $dir\"$fileNameWithoutExt\" -W -Wall -O2 -std=c++17 && $dir\"$fileNameWithoutExt\" < $dir\"in\" > $dir\"out\" && diff $dir\"out\" $dir\"stdout\" && rm -f $dir\"$fileNameWithoutExt\"",
     },
-    "editor.fontSize": 14,
     "bracket-pair-colorizer-2.depreciation-notice": false,
     "editor.cursorStyle": "underline",
     "editor.suggest.snippetsPreventQuickSuggestions": true,
@@ -83,6 +82,9 @@
         "random": "cpp",
         "vector": "cpp",
         "queue": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "algorithm": "cpp",
+        "ios": "cpp"
     },
+    "editor.fontSize": 18,
 }
