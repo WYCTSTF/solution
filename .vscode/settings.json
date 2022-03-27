@@ -20,7 +20,7 @@
     "editor.fontWeight": "450",
     "C_Cpp.errorSquiggles": "Enabled",
     "terminal.integrated.gpuAcceleration": "off",
-    "workbench.colorTheme": "One Dark Pro",
+    "workbench.colorTheme": "GitHub Dark",
     "security.workspace.trust.untrustedFiles": "open",
     "editor.minimap.enabled": false,
     "editor.inlayHints.fontFamily": "chalkboard se",
@@ -86,5 +86,5 @@
         "algorithm": "cpp",
         "ios": "cpp"
     },
-    "editor.fontSize": 18,
+    "editor.fontSize": 14,
 }
