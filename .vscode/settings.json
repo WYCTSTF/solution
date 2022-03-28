@@ -76,7 +76,7 @@
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
     },
-    "vscode_vibrancy.opacity": 0.3,
+    "vscode_vibrancy.opacity": 0.1,
     "workbench.activityBar.visible": false,
     "files.associations": {
         "random": "cpp",
@@ -87,4 +87,5 @@
         "ios": "cpp"
     },
     "editor.fontSize": 14,
+    "vscode_vibrancy.theme": "Default Dark",
 }
