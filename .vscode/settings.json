@@ -43,7 +43,7 @@
     "editor.dragAndDrop": false,
     "editor.foldingStrategy": "indentation",
     "editor.guides.bracketPairs": true,
-    "editor.lineHeight": 20,
+    "editor.lineHeight": 18,
     "editor.padding.bottom": 5,
     "editor.renderLineHighlight": "gutter",
     "editor.scrollBeyondLastLine": false,
@@ -166,6 +166,6 @@
         "valarray": "cpp",
         "filesystem": "cpp"
     },
-    "editor.fontSize": 15,
+    "editor.fontSize": 13,
     "editor.linkedEditing": true,
 }
