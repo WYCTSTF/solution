@@ -1,67 +1,112 @@
-#include<cstdio>
-#include<algorithm>
-#include<cmath>
-#define N 100010
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <cmath>
+#include <cstring>
+#include <algorithm>
+
 using namespace std;
-int n,st,a[N],bl[N],le[N],ri[N];
-int b[321],check[321],l,r,c;
-
-inline int read()
-{
-	int x=0,f=0; char c=getchar();
-	while (c<'0' || c>'9') f=(c=='-') ? 1:f,c=getchar();
-	while (c>='0' && c<='9') x=(x<<1)+(x<<3)+(c^48),c=getchar();
-	return f ? -x:x;
+const int N = 40040;
+const int K = 220;
+int n, m, L, len, sum[K][N], vis[N];
+int tmpnum[N], B[N], last, pre[N];
+struct getin {
+    int id, d, se;
+}a[N];
+struct node {
+    int num, s;
+}p[K][K];
+inline bool cmp1(getin x, getin y) { return x.d < y.d; }
+inline bool cmp2(getin x, getin y) { return x.id < y.id; }
+inline int getB(int x) {
+    int ret = x / L;
+    if(x % L) ret++;
+    return ret;
 }
-
-void update(int x)
-{
-	if (!check[x]) return;
-	for (int i=le[x];i<=ri[x];i++) a[i]=b[x];
-	check[x]=0,b[x]=-1;
+inline void prework() {
+    for(int i = 1; i <= len; i++) {
+        memset(B, 0, sizeof(B)); node tmp;
+        tmp.num = tmp.s = 0;
+        for(int j = i; j <= len; j++) {
+            for(int k = (j - 1) * L + 1; k <= min(n, j * L); k++) {
+                B[a[k].se]++;
+                if(B[a[k].se] > tmp.s) {
+                    tmp.num = a[k].se;
+                    tmp.s = B[a[k].se];
+                }
+                else if(B[a[k].se] == tmp.s)
+                    tmp.num = min(tmp.num, a[k].se), 
+                    tmp.s = B[a[k].se];
+            }
+            p[i][j] = tmp;
+        }
+    }
+    for(int i = 1; i <= len; i++) {
+        for(int j = 1; j <= n; j++) sum[i][a[j].se] = sum[i - 1][a[j].se];
+        for(int j = (i - 1) * L + 1; j <= min(n, i * L); j++) 
+            sum[i][a[j].se]++;
+    }
 }
-
-int q_c(int l,int r,int c)
-{
-	int ans=0;
-	update(bl[l]);
-	for (int i=l;i<=min(ri[bl[l]],r);i++)
-		if (a[i]==c) ans++; else a[i]=c;
-	if (bl[l]!=bl[r])
-	{
-		update(bl[r]);
-		for (int i=le[bl[r]];i<=r;i++)
-			if (a[i]==c) ans++; else a[i]=c;
-	}
-	for (int i=bl[l]+1;i<=bl[r]-1;i++)
-		if (check[i])
-		{
-			if (b[i]==c) ans+=st;
-			else b[i]=c;
-		}
-		else
-		{
-			for (int j=le[i];j<=ri[i];j++)
-				if (a[j]==c) ans++;
-			check[i]=1,b[i]=c;
-		}
-	return ans;
-}
-
-int main()
-{
-	n=read(),st=sqrt(n);
-	for (int i=1;i<=n;i++) a[i]=read();
-	for (int i=1;i<=n;i++)
-	{
-		bl[i]=(i-1)/st+1;
-		if (!le[bl[i]]) le[bl[i]]=i;
-		ri[bl[i]]=i;
-	}
-	for (int i=1;i<=n;i++)
-	{
-		l=read(),r=read(),c=read();
-		printf("%d\n",q_c(l,r,c));
-	}
-	return 0;
+int main() {
+    scanf("%d%d", &n, &m); L = sqrt(n);
+    len = (n + L - 1) / L;
+    for(int i = 1; i <= n; i++)
+        scanf("%d", &a[i].d), a[i].id = i;
+    sort(a + 1, a + n + 1, cmp1); a[0].d = -1;
+    for(int i = 1; i <= n; i++) {
+        a[i].se = a[i - 1].se;
+        if(a[i - 1].d != a[i].d) 
+            a[i].se++;
+        pre[a[i].se] = a[i].d;
+    }
+    sort(a + 1, a + n + 1, cmp2);
+    prework(); 
+    for(int i = 1; i <= m; i++) {
+        int l, r; scanf("%d%d", &l, &r);
+        l = (l + last - 1) % n + 1;
+        r = (r + last - 1) % n + 1;
+        if(l > r) swap(l, r);
+        int posl = getB(l), posr = getB(r);
+         if(posr - posl <= 2) {
+            int ans = 0;
+            for(int j = l; j <= r; j++) tmpnum[a[j].se] = 0;
+            for(int j = l; j <= r; j++) {
+                tmpnum[a[j].se]++;
+                if(tmpnum[a[j].se] > tmpnum[ans]) ans = a[j].se;
+                else if(tmpnum[a[j].se] == tmpnum[ans]) ans = min(ans, a[j].se);
+            }
+            printf("%d\n", last = pre[ans]);
+        } 
+        else {
+            int ans = p[posl + 1][posr - 1].num;
+            tmpnum[ans] = 0, vis[ans] = 0;
+            for(int j = l; j <= min(n, posl * L); j++) tmpnum[a[j].se] = 0, vis[a[j].se] = 0;
+            for(int j = (posr - 1) * L + 1; j <= r; j++) tmpnum[a[j].se] = 0, vis[a[j].se] = 0;
+            for(int j = l; j <= min(n, posl * L); j++) tmpnum[a[j].se]++;
+            for(int j = (posr - 1) * L + 1; j <= r; j++) tmpnum[a[j].se]++;
+            int MXnum, MX = 0;
+            for(int j = l; j <= min(n, posl * L); j++)
+                if(!vis[a[j].se]) {
+                    vis[a[j].se] = 1;
+                    int val = tmpnum[a[j].se] + sum[posr - 1][a[j].se] - sum[posl][a[j].se];
+                    if(MX < val)
+                        MX = val, 
+                        MXnum = a[j].se;
+                    else if(MX == val) MXnum = min(MXnum, a[j].se);
+                }
+            for(int j = (posr - 1) * L + 1; j <= r; j++)
+                if(!vis[a[j].se]) {
+                    vis[a[j].se] = 1;
+                    int val = tmpnum[a[j].se] + sum[posr - 1][a[j].se] - sum[posl][a[j].se];
+                    if(MX < val)
+                        MX = val, 
+                        MXnum = a[j].se;
+                    else if(MX == val) MXnum = min(MXnum, a[j].se);
+                }
+            if(MX > tmpnum[ans] + p[posl + 1][posr - 1].s) ans = MXnum;
+            else if(MX == tmpnum[ans] + p[posl + 1][posr - 1].s) ans = min(ans, MXnum);
+            printf("%d\n", last = pre[ans]);
+        } 
+    }
+    return 0;
 }
