@@ -43,7 +43,7 @@
     "editor.dragAndDrop": false,
     "editor.foldingStrategy": "indentation",
     "editor.guides.bracketPairs": true,
-    "editor.lineHeight": 18,
+    "editor.lineHeight": 16,
     "editor.padding.bottom": 5,
     "editor.renderLineHighlight": "gutter",
     "editor.scrollBeyondLastLine": false,
@@ -166,6 +166,9 @@
         "valarray": "cpp",
         "filesystem": "cpp"
     },
-    "editor.fontSize": 13,
+    "editor.fontSize": 14,
     "editor.linkedEditing": true,
+    "editor.cursorSmoothCaretAnimation": false,
+    "workbench.list.smoothScrolling": true,
+    "editor.smoothScrolling": true,
 }
