@@ -1,1 +1,0 @@
-doubleMe x = x * 3

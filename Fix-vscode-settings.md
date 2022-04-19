@@ -32,6 +32,7 @@
 * Github Theme
 * Community Material Theme
 * Atom One Dark Theme
+* Monokai Pro
 
 <!-- ### Python
 * Pylance
