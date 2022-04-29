@@ -23,21 +23,11 @@ signed main() {
       mp[i][v]=w;
     }
   }
-  // debug
-  // for(int i=1;i<=n;i++){
-  //   for(int j=1;j<=n;j++) cout<<mp[i][j]<<' ';
-  //   cout<<endl;
-  // }
 
   for(int k=1;k<=n;k++)
     for(int i=1;i<=n;i++)
       for(int j=1;j<=n;j++)
         mp[i][j]=min(mp[i][j],mp[i][k]+mp[k][j]);
-  // debug
-  // for(int i=1;i<=n;i++){
-  //   for(int j=1;j<=n;j++) cout<<mp[i][j]<<' ';
-  //   cout<<endl;
-  // }
 
   for(auto u:f){
     int Max=-1;
