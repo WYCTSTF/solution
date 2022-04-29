@@ -1,12 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-	int n;
-	cin >> n;
-	vector a(n, 0LL);
-	for (auto &it : a) {
-		it = 2;
+	cin.tie(nullptr)->sync_with_stdio(false);
+	int n; cin>>n;
+	vector<int>a(n, 0);
+	for(int i=1;i<=n;i++){
+		
 	}
-	cout << accumulate(a.begin(), a.end(), 0LL) << endl;
 	return 0;
 }
