@@ -1,44 +1,49 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 public class FileServer {
-	public static void main(String args[]) throws Exception {
-		int port=Integer.parseInt(args[0]);
-		ServerSocket server=new ServerSocket(port);
-		System.out.println("服务器正在等待连接");
+	public static void main(String[] args) throws Exception {
+		int port = 4001;
+		ServerSocket ss=new ServerSocket(port);
+		System.out.println("服务器等待连接...");
 		ExecutorService threadPool=Executors.newFixedThreadPool(100);
 		while (true) {
-			Socket socket=server.accept();
+			Socket socket=ss.accept();
+			System.out.println("连接到远程主机 - "+socket.getRemoteSocketAddress());
 			Runnable runnable=()->{
 				try {
-					System.out.println("连接到远程主机 - "+socket.getRemoteSocketAddress());
-					InputStream is=socket.getInputStream();
-					OutputStream os=socket.getOutputStream();
-					DataInputStream dis=new DataInputStream(is);
-					DataOutputStream dos=new DataOutputStream(os);
+					DataInputStream dis=new DataInputStream(socket.getInputStream());
+					DataOutputStream dos=new DataOutputStream(socket.getOutputStream());
+					int len;
+					byte[] bytes=new byte[1024];
 					String filePath=dis.readUTF();
-					System.out.println("目录接收成功 - "+filePath+"，正在查找...");
-					File src=new File(filePath);
 					try {
-						InputStream temIs=new FileInputStream(src);
-						byte[] bytes=new byte[1024];
-						int len=-1;
-						while  ((len=temIs.read(bytes))!=-1) {
-							os.write(bytes);
+						File src=new File(filePath);
+						FileInputStream fis=new FileInputStream(src);
+						dos.writeUTF("success"); dos.flush();
+						while ((len=fis.read(bytes)) != -1) {
+							dos.write(bytes, 0, len);
 						}
-						os.flush();
-						temIs.close();
-						dos.writeUTF("success");
-					} catch (FileNotFoundException f) {
-						dos.writeUTF("文件不存在");
-						f.printStackTrace();
+						dos.flush();
+						fis.close();
+						System.out.println("文件传输结束");
+						socket.close();
+					} catch (FileNotFoundException fnf) {
+						dos.writeUTF("fail"); dos.flush();
 					}
-				} catch(Exception e){
+				} catch (EOFException e) {
+					System.out.println("客户端"+socket.getRemoteSocketAddress()+"终止");
+				} catch (Exception e) {
 					e.printStackTrace();
-				}
+				} 
 			};
 			threadPool.submit(runnable);
 		}
