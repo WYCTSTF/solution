@@ -2,8 +2,6 @@
 
 using namespace std;
 
-#define LOCAL
-
 #ifdef LOCAL
 #include "algo/debug.h"
 #else
@@ -32,6 +30,7 @@ const int inf=0x3f3f3f3f;
 const int MOD=998244353;
 const int mod=1e9+7;
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a; }
+
 namespace FAST_IO {
 #define ll long long
 #define ull unsigned long long
@@ -99,17 +98,13 @@ inline void wt_str(string s) {
 using namespace FAST_IO;
 
 int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-
-	int n;
-	cin >> n;
-
-	write(n, '\n');
-
-	puts("");
-
-	deb(n);
-
+	vector<int>a;
+	int tem;
+	while (scanf("%d", &tem)!=EOF) {
+		a.pb(tem);
+	}
+	// deb(a);
+	write(a[0]+a[1],'\n');
+	flushout();
 	return 0;
 }
