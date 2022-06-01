@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 int narcissus(int n)
 {
     int a[10],i,sum,m;
