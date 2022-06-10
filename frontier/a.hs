@@ -136,3 +136,7 @@ getUpper xs = [c | c <- xs, c `elem` ['A' .. 'Z']]
 
 -- ghci> let xxs = [[1,3,5,2,2,4],[1,2,3,4,5],[1,2,3,4,512]]
 -- ghci> [[x | x <- xs, even x] | xs <- xxs]
+
+ans n m = sum [if gcd x y == 1 then 1 else 0 | x <- [1 .. n - 1], y <- [1 .. m - 1]] + 2
+
+-- \sum \sum_{j=1}^{i=1}

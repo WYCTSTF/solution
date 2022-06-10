@@ -30,4 +30,4 @@
 
 ## 常见-简单-图论
 
-$\sum_k^n\lfloor\sqrt{k}\rfloor$
+xy 的简单题 $\sum_k^n\lfloor\sqrt{k}\rfloor$
