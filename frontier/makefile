@@ -1,4 +1,4 @@
-all: a
+all: sol
 
-a:a.cpp
-	g++ a.cpp -o a -std=c++17 -Wall -Wextra -fsanitize= -DLOCAL
+sol:sol.cpp
+	g++ sol.cpp -o sol -std=c++17 -Wall -Wextra -fsanitize= -DLOCAL
