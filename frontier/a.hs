@@ -182,4 +182,52 @@ removeNonUppercase st = [c | c <- st, c `elem` ['A' .. 'Z']]
 
 -- 分隔参数也是 ->
 addThree :: Int -> Int -> Int -> Int
-addThree x y z = x + y + z
+addThree x y z=x+y+z
+
+-- factorial :: Int -> Int 如果启用这个声明，就会溢出成傻逼，因为这个范围是-2147483648 ~ 2147483647
+factorial :: Integer -> Integer -- 而 Integer 无上限，不过效率要低
+factorial n = product [1..n]
+
+circumference :: Float -> Float -- 双精度
+circumference r = 2 * pi * r
+
+circumference' :: Double -> Double -- 双精度
+circumference' r = 2 * pi * r
+
+{-------------------------------
+-------  Type Variables  -------
+-------------------------------}
+
+-- head 的类型为 :: [a] -> a
+-- 其中 a 是一个类型变量，并不指示任何具体类型
+-- 有点像 c++ 里的泛型？
+
+-- ghci> :t (==)  
+-- (==) :: (Eq a) => a -> a -> Bool
+
+-- 判断 == 是一个中缀函数，还有一些运算符号也是如此
+-- 如果要检查他的类型 就要用（）括起来令他作为另一个函数
+
+-- => 符号左边的部分叫做 型别约束 Typeclass
+-- 可以看做 java 中的 interface 或者 C++ 中的 template class?
+-- 后者是个人理解，事实上我对C++的模版是一点也不了解
+
+-- Eq 这一 Typeclass 提供了判断相等性的接口，凡是可以比较相等性的型别必属于 Eq class
+-- elem 函数的型别为 (Eq a) => a -> [a] -> Bool
+-- 因为检测是否存在于 List 的过程中用到了 ==
+
+-- 几个基本的 Typeclass
+
+-- Eq class
+-- 提供了 == 和 /= 所以只要有一个函数有 Eq 的型别限制，那么一定在定义里用到了 == 和 /=
+-- 除函数以外的所有型别都属于 Eq，因此都可以判断相等性
+
+-- Ord class
+-- 包含 `<,>,<=,>=` 之类用于比较大小的函数
+-- `compare` 函数取两个 Ord 类中的相同型别的值作参数返回一个 Ordering 类型的值
+-- Ordering 类型有 GT EQ LT 三种值 分别表示 大于 等于 小于
+
+-- 型别如果属于 Ord 显然必先属于 Eq
+
+-- 感觉模版这东西和 List Comprehension + predicate 没差多少
+-- 纯纯的一个集合 + 集合操作
