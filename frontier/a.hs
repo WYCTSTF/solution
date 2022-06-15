@@ -1,3 +1,4 @@
+import Control.Arrow (Arrow(first))
 -- 单行注释
 
 {--
@@ -202,15 +203,21 @@ circumference' r = 2 * pi * r
 -- 其中 a 是一个类型变量，并不指示任何具体类型
 -- 有点像 c++ 里的泛型？
 
--- ghci> :t (==)  
+-- ghci> :t (==)
 -- (==) :: (Eq a) => a -> a -> Bool
 
 -- 判断 == 是一个中缀函数，还有一些运算符号也是如此
 -- 如果要检查他的类型 就要用（）括起来令他作为另一个函数
 
+{-------------------------------
+---------  Type class ----------
+-------------------------------}
+
 -- => 符号左边的部分叫做 型别约束 Typeclass
 -- 可以看做 java 中的 interface 或者 C++ 中的 template class?
 -- 后者是个人理解，事实上我对C++的模版是一点也不了解
+
+-- 理解成实例为类型的 interface 还是可以的
 
 -- Eq 这一 Typeclass 提供了判断相等性的接口，凡是可以比较相等性的型别必属于 Eq class
 -- elem 函数的型别为 (Eq a) => a -> [a] -> Bool
@@ -231,3 +238,188 @@ circumference' r = 2 * pi * r
 
 -- 感觉模版这东西和 List Comprehension + predicate 没差多少
 -- 纯纯的一个集合 + 集合操作
+
+-- Show class
+-- 目前为止，除函数以外的所有类型都是 Show class 的实例
+-- 操作 Show 类型类的实例的函数中，最常用的是 show
+-- show :: (Show a) => a -> String
+-- 没错，show 甚至可以把 String 类型转换成 String 类型
+
+-- Read class
+-- 可以看做与 Show 相反的 Typeclass
+-- read 函数
+-- read :: (Read a) => String -> a
+-- 但是一个 read "4" 是ambiguous的 从 constraints 中也可见一斑，a 是一个Type variable，必须直接指定实例的具体类型、型别或者通过后接的操作间接的推导类型
+-- 对于直接指示类型，我们使用 类型注解
+-- ghci> read "5" :: Int
+-- ghci> read "(3, 'a')" :: (Int, Char)
+
+-- Enum class
+-- Enum 的实例类型都是有连续顺序的，它们的值都是可以枚举的
+-- 每个值都有相应的后继(successer)和前趋(predecesor) 可以用 succ 和 pred 函数得到
+
+-- Bounded class
+-- 实例都有一个上限和下限，分别用 maxBound 和 minBound 函数得到
+-- ghci> minBound :: Int
+-- -2147483648
+-- ghci> maxBound :: Char
+-- '\1114111'
+-- ghci> minBound :: Bool
+-- False
+-- 这两个函数的类型都是 (Bounded a) => a 可以说这两个函数都是多态常量
+-- 如果元组中项的类型都属于 Bounded 类型类的实例，那么这个元组也属于 Bounded 的实例了
+
+-- Num class
+-- 它的实例类型都有数的特征
+-- ghci> :t 20
+-- 20 :: (Num t) => t
+-- ghci> :t (*)
+-- (*) :: (Num a) => a -> a -> a
+-- 可以看到乘号两边的类型必须相同，故这里的 Type 应当属于 Show 和 Eq
+
+-- Floating class
+-- 仅包含 Float 和 Double 两种浮点类型
+-- 某些函数 如 sin \ cos \ sqrt
+
+-- Integeral class
+-- 实例类型有 Int 和 Integer
+-- 有个函数十分实用 fromIntegeral
+-- fromIntegeral :: (Integeral a, Num b) => a -> b
+-- 注意到用了多个类型约束，这是合法的，用逗号隔开即可
+-- 通过签名可以看出 fromIntegeral函数取一个整数作为参数并返回一个更加通用的数值
+-- 例如对于 length :: [a] -> Int ，取了一个列表长度之后给他加上一个浮点数，就会寄掉
+-- ghci> fromIntegeral (length [1,2,3,4]) + 3.2
+-- 7.2
+
+-- 有时，属于一个 Typeclass 会是属于另一个 Typeclass 的先决条件 prerequisite
+
+
+{-----------------------------------------------
+------------------------------------------------
+
+--------------  第三章 函数的语法  ----------------
+
+------------------------------------------------
+-----------------------------------------------}
+
+------------------   模式匹配   -----------------
+
+-- 模式匹配用来避免大块的if else链
+
+lucky :: Int -> String
+lucky 7 = "Lucky Number Seven"
+lucky x = "Sorry, you're out of luck, pal!"
+
+-- 模式匹配将会按照从上到下的顺序检查
+
+-- 利用模式匹配写出第一个 Haskell 的递归函数
+factorial' :: Integer -> Integer
+factorial' 0 = 1
+factorial' n = n * factorial' (n-1)
+
+-- 模式匹配可能会失败
+charName :: Char -> String
+charName 'a' = "Albert"
+charName 'b' = "Broseph"
+charName 'c' = "Cecil"
+-- Non-exhaustive patterns in function.
+
+-- 元组的模式匹配
+-- 计算二维空间中的向量(以序对的形式表示)的和
+addVectors :: (Double, Double) -> (Double, Double) -> (Double, Double)
+-- addVectors a b = (fst a + fst b, snd a + snd b)
+-- 如果用模式匹配
+addVectors (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
+-- 主要是突出一点：模式匹配检查特定的结构
+
+
+first' :: (a, b, c) -> a
+first' (x, _, _) = x
+-- 泛变量 generic variable _
+-- 这个貌似可以重复，换成别的就不行
+-- 可能特指那些不受重视的元素
+second' :: (a, b, c) -> b;
+second' (_, y, _) = y;
+third :: (a, b, c) -> c;
+third (_, _, z) = z
+
+------   哨卫   ----------
+-- 一个哨卫就是一个布尔表达式
+
+bmiTell :: Double -> String
+bmiTell bmi
+  | bmi <= 18.5 = "You' re underweight, you emo, you!"
+  | bmi <= 25.0 = "You' re supposeedly normal. Pffft, I bet you're ugly!"
+  | bmi <= 30.0 = "You' re fat! Lose some weight, fatty!"
+-- | otherwise = "FF" 如果去掉之后，下一行的模式匹配就是 redundant 的
+bmiTell _ = "Fuck you" -- 如果所有哨卫都不匹配并且不具备 otherwise
+
+max' :: (Ord a) => a -> a -> a
+max' a b
+  | a < b = b
+  | otherwise = a
+
+myCompare :: (Ord a) => a -> a -> Ordering
+a `myCompare` b
+  | a == b = EQ
+  | a <= b = LT
+  | otherwise = GT
+
+
+-- 观察如下例子
+-- bmiTell' :: Double -> Double -> String
+-- bmiTell' weight height
+--   | weight / height ^ 2 <= 18.5 = "you' re underweight."
+--   | weight / height ^ 2 <= 25.0 = "you' re normal."
+--   | weight / height ^ 2 <= 30.0 = "you' re fat."
+--   | otherwise = "you' re a whale"
+-- 显然这个例子里面，weight / height ^ 2 是个很让人恼火的玩意儿
+-- 因此我们可以使用 where
+-- 直接上一个激进的修改
+bmiTell' :: Double -> Double -> String
+bmiTell' weight height
+  | bmi <= skinny = "you' re underweight"
+  | bmi <= normal = "you' re normal"
+  | bmi <= fat    = "you' re fat"
+  | otherwise     = "you' re a whale."
+  where bmi = weight / height ^ 2
+        -- skinny = 18.5
+        -- normal = 25.0
+        -- fat = 30.0
+        -- where 中可以使用模式匹配
+        (skinny, normal, fat) = (18.5, 25.0, 30.0)
+        -- where 绑定中的模式匹配，从某方面来讲我觉得有些过于人性化、数学化了
+
+-- 注意其中的变量定义必须对其在同一列 这样 Haskell 才能明确其所在的代码块
+
+-- where 部分定义的名字只对本函数可见
+-- 因此如果想要重复使用 则应当放在全局中
+
+-- 来看一个失败的案例
+
+-- greet :: String -> String
+-- greet "Juan" = niceGreeting ++ " Juan!"
+-- greet "Fernando" = niceGreeting ++ " Fernando!"
+-- greet name = badGreeting ++ " " ++ name
+--       where niceGreeting = "Hello! So vrey nice to see you,"
+--             badGreeting = "Oh! Pfft. It's you."
+
+-- 可以交换两行 where 的顺序 发现 " Juan" \ "Fernando" \ name 会分别报错
+-- 因为 where 定义的名字只有最后一个模式可用
+
+-- 因此在这里我们需要全局定义
+badGreeting :: String
+badGreeting = "balabala"
+
+niceGreeting :: String
+niceGreeting = "balala"
+
+-- 一个简单函数 告诉我们姓名的首字母 运用 where 中的模式匹配
+initials :: String -> String -> String
+initials firstname lastname = [f] ++ ". "++[l] ++ "."
+  where (f:_) = firstname
+        (l:_) = lastname
+
+------------------------------------
+------ 在 where 块中定义函数  --------
+------------------------------------
