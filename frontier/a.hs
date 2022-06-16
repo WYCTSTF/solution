@@ -536,3 +536,88 @@ maximum' :: (Ord a) => [a] -> a
 maximum' [] = error "maximum of empty list"
 maximum' [x] = x
 maximum' (x:xs) = max x (maximum' xs)
+
+-- 尝试写出自己的replicate
+replicate' :: Int -> a -> [a]
+-- 发现如果用模式匹配会不是很好写
+-- 对于 case 或者 let 也是
+-- 因为这里考察的不是一个表达式 或者 匹配，而是判断一个边界，需要哨卫判断条件
+
+-- 到这里我才算理解参数要检查的就两种，一个是参数结构，一个是参数性质，即内容
+replicate' n x
+  | n <= 0 = []
+  | otherwise = x : replicate' (n-1) x
+
+
+-- Take 函数有两个边界条件
+-- 1. n <= 0 返回空列表
+-- 2. 取空列表 返回 空列表
+take' :: (Num i, Ord i) => i -> [a] -> [a]
+take' n _
+  | n <= 0 = [] -- 在之前演示过，如果一个哨卫不使用otherwise 那么在 n > 0 的时候就会进入下一个模式
+take' _ [] = []
+take' n (x:xs) = x : take' (n-1) xs
+
+reverse' :: [a] -> [a]
+reverse' [] = []
+reverse' (x:xs) = reverse' xs ++ [x]
+
+-- 这一个函数直接给我干懵了 别的过程式语言绝不可能写的如此狂野
+repeat' :: a -> [a]
+repeat' x = x : repeat' x
+
+zip' :: [a] -> [b] -> [(a,b)]
+zip' _ [] = []
+zip' [] _ = []
+zip' (x:xs) (y:ys) = (x,y) : zip' xs ys -- 如此的自然！
+
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' a [] = False
+elem' a (x:xs)
+  | a == x = True
+  | otherwise = a `elem'` xs
+
+-- 最终递归：快排
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) =
+  let smallerOrEqual = [a | a <- xs, a <= x]
+      larger = [a | a <- xs, a > x]
+  in quicksort smallerOrEqual ++ [x] ++ quicksort larger
+-- 太离谱了 \ 不过如此
+
+{-----------------------------------------------
+------------------------------------------------
+
+---------------  第五章 高阶函数  ----------------
+
+------------------------------------------------
+-----------------------------------------------}
+
+-- 5.1 柯里函数
+
+-- 所有的多参数函数都是柯里函数，柯里函数不会一次性取完所有参数，而是在每次调用时取一个参数，并返回一个一元函数来取下一个参数，以此类推
+-- ghci> :t max
+-- max :: (Ord a) => a -> a -> a
+-- 上面的声明也可以写成 max :: (Ord a) => a -> (a -> a)
+-- 也就是取一个类型为 a 的值作为参数，返回一个函数，这个函数取类型为 a 的值作为参数，返回类型为 a 的值
+-- 这样的好处是，我们传入部分参数，就可以得到一个部分应用的函数 (partial application)
+-- 部分应用使得构造新函数简便快捷，随时可以传递给其他函数去构造新函数
+
+multiThree :: Int -> (Int -> (Int -> Int))
+multiThree x y z = x * y * z
+
+-- 一个例子，以少数参数调用函数来创建新函数
+-- ghci> let multTwoWithNine = multiThree 9
+-- ghci> mulTwoWithNine 2 3
+-- 54
+
+compareWithHundred :: Int -> Ordering
+-- compareWithHundred n = n `compare` 100 这是之前的写法
+compareWithHundred = compare 100
+
+-- 发现想要 100 放在前去比较 直接写 compareWithHundred = 100 `comare` 是不行的
+-- 原因是中缀函数需要 截断 (section) 才能进行部分应用 这步加上一个()就可以实现
+-- compareHundredWith = (100 `compare`)
+-- 加减乘除等二元运算也是如此 当然 为了区分 负数，如果需要减法，应当使用 subtract 函数
+

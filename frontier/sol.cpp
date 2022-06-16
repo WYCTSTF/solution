@@ -31,40 +31,7 @@ typedef long long ll;
 typedef double db;
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a; }
 
-const int N = 100010;
-
-int a[N];
-bool vis[N];
-
 int main() {
-  int n; cin >> n;
-  for (int i = 1; i <= n; i++) {
-    cin >> a[i];
-  }
+  
   return 0;
 }
-
-/*
-
-a[i] = permutation of 1 ... n
-
-i=1->n
-
-a[a[i]]-=n
-
-vis[a[i]]=true
-
-a[i]+=n
-
-
-a[i] x  . .. y
-
-a[x] = a[x] - n, 1 <= a[x] <= n
-
-a[a[x] += n] -= n
-
-
-
-
-
-*/
