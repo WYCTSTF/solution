@@ -1,4 +1,3 @@
-import Control.Arrow (Arrow(first))
 -- 单行注释
 
 {--
@@ -423,3 +422,38 @@ initials firstname lastname = [f] ++ ". "++[l] ++ "."
 ------------------------------------
 ------ 在 where 块中定义函数  --------
 ------------------------------------
+
+calcBmis :: [(Double, Double)] -> [Double]
+calcBmis xs = [bmi w h | (w, h) <- xs]
+  where bmi weight height = weight / height ^ 2
+  -- 可以看到这里 where 中的 bmi 是一个函数
+
+-- 到这里为止 我们尝试使用不变形的方法计算 (1 + (1 + 2) + .. + (1 + .. + n))
+-- 我决定使用递归去做
+calc1 :: Integer -> Integer
+calc1 1 = 1
+calc1 n = sum [1 .. n] + calc1 (n-1)
+
+-- 除此以外，是否能用 where 完成这件事情
+
+calc2 :: Int -> Int
+calc2 n = sum [sum xs | xs <- [[1 .. i] | i <- [1 .. n]]]
+
+-- 到现在算是理解 List Comprehension 了...
+cylinder :: Double -> Double -> Double
+cylinder r h = 
+    let sideArea = 2 * pi * r * h
+        topArea = pi * r ^ 2
+    in sideArea + topArea
+
+-- let <bindings> in <expressions>
+-- let 中绑定的名字仅对 in 中的表达式可见
+-- ghci> 4 * (let a = 9 in a + 1) +2
+-- 42
+-- let 表达式类似于 where 绑定
+-- where 可以在函数底部绑定 变量 或者 函数，支持模式匹配 对整个函数包括哨卫在内的内容可见
+-- let 则是一个表达式 允许在任何位置定义局部变量 并且不对别的哨卫可见
+
+-- ghci> [let square x = x * x in (square 5, square 3, square 2)]
+-- [25, 9, 4]
+
