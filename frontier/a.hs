@@ -457,3 +457,9 @@ cylinder r h =
 -- ghci> [let square x = x * x in (square 5, square 3, square 2)]
 -- [25, 9, 4]
 
+-- 需要在一行中绑定多个名字时，可以用分号隔开
+-- ghci> (let a = 100; b = 200; c = 300 in a * b * c, let foo = "Hey "; bar = "there!" in foo ++ bar)
+-- (6000000, "Hey there!")
+
+-- ghci> (let (a,b,c) == (1,,2,3) in a+b+c) * 100
+-- 600
