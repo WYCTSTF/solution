@@ -441,10 +441,14 @@ calc2 n = sum [sum xs | xs <- [[1 .. i] | i <- [1 .. n]]]
 
 -- 到现在算是理解 List Comprehension 了...
 cylinder :: Double -> Double -> Double
-cylinder r h = 
+cylinder r h =
     let sideArea = 2 * pi * r * h
         topArea = pi * r ^ 2
     in sideArea + topArea
+
+-------------------------------------------
+-----------------  3.4 let  ---------------
+-------------------------------------------
 
 -- let <bindings> in <expressions>
 -- let 中绑定的名字仅对 in 中的表达式可见
@@ -463,3 +467,72 @@ cylinder r h =
 
 -- ghci> (let (a,b,c) == (1,,2,3) in a+b+c) * 100
 -- 600
+
+-- calcBmis xs = [bmi wh | (w,h) <- xs]
+--  where bmi weight height = weight / height ^ 2
+-- 可以改写成
+
+-- 列表推导式中的 let
+-- calcBmis xs = [bmi | (w, h) <- xs, let bmi = w / h ^ 2]
+-- Haskell是说话的艺术，不在乎底层怎么实现，而是数据的表述方式
+-- List comprehension 中的 (w, h) <- xs 被称为生成器(generator)
+-- 生成器中不能饮用 bmi 变量，因为他在 let 绑定之前定义 ｜ 是句废话
+
+------------------------------------------------------
+--------------------  3.5 case 表达式 -----------------
+------------------------------------------------------
+
+-- 两段等价代码
+-- head' :: [a] -> a
+-- head' [] = error "No head for empty lists!"
+-- head' (x:_) = x
+-- 还记得这里的括号不表示元组，而是将绑定多个变量的一种格式，不产生语义歧义
+head' :: [a] -> a
+head' xs = case xs of []    -> error "No head for empty lists"
+                      (x:_) -> x
+
+-- case 的语法
+-- case expression of pattern -> result
+--                    pattern -> result
+--                    ...
+
+
+-- 一直到最后没有匹配的模式就会产生一个运行时错误
+
+-- 函数参数的模式匹配只能在定义函数的时候使用，但是 case 表达式的模式匹配可以在任何地方使用
+-- 简单讲，参数的模式匹配 对象 限定参数 而 case 的 对象 是任何你想要操作的东西
+
+describeList :: [a] -> String
+describeList ls = "The list is " ++ case ls of []    -> "empty"
+                                               [x]   -> "a singleton list."
+                                               (x:_) -> "a longer list"
+                                    -- 或者写成 xs -> "a longer list."
+                                    -- 事实上这个 xs 匹配了所有的东西
+
+-- 函数定义中的模式匹配也就是 case 的语法糖
+describelist' :: [a] -> String
+describelist' ls = "The list is " ++ what ls
+  where what []  = "..."
+        what [x] = "a singleton list"
+        what xs  = "a longer list"
+
+-- 这里可以看到 where 中定义的 what 函数又是由参数模式匹配写出来的
+-- 自然 what 也可以用 case 表示
+
+  -- where what ls = case ls of []    -> "empty"
+  --                            [x]   -> "a singleton list"
+  --                            (x:_) -> "a longger list"
+
+
+{-----------------------------------------------
+------------------------------------------------
+
+-----------------  第四章 递归  ------------------
+
+------------------------------------------------
+-----------------------------------------------}
+
+maximum' :: (Ord a) => [a] -> a
+maximum' [] = error "maximum of empty list"
+maximum' [x] = x
+maximum' (x:xs) = max x (maximum' xs)
