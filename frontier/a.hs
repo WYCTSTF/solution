@@ -621,3 +621,43 @@ compareWithHundred = compare 100
 -- compareHundredWith = (100 `compare`)
 -- 加减乘除等二元运算也是如此 当然 为了区分 负数，如果需要减法，应当使用 subtract 函数
 
+isUpperAlphanum :: Char -> Bool
+isUpperAlphanum = (`elem` ['A' .. 'Z'])
+
+-- 好了，终于到了一年前听说 Haskell 的程度 将函数作为参数和返回值
+
+
+applyTwice :: (t -> t) -> t -> t
+applyTwice f x = f (f x)
+-- 之前类型声明中很少用到括号 因为 -> 是自然的右结合，但是这里的括号是必须的
+-- 而且这里很重要的一点是 所有的值的类型都相同 不能是一个 (t -> [t]) 的函数
+-- 上面那句貌似也是废话
+
+
+-- 通过 截断 和 柯里化 能够言简意赅的做很多事情
+-- zipWith 也是标准库中一个很有用的函数
+zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipWith' _ [] _ = []
+zipWith' _ _ [] = []
+zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
+-- 如果要用zipWith' 组合 (zipWith' (*))，该怎么做?
+-- 感觉有点抽象了..
+-- 其实不难理解，写出 zipWith' (*) :: Num c => [c] -> [c] -> [c]
+-- 和 zipWith' (zipWith' (*)) :: Num c => [[c]] -> [[c]] -> [[c]]
+-- 就不难理解 这是两个列表的列表的组合乘法
+
+-- 能否使用高阶函数构造 [[1], [1,2] .. [1..n]]
+-- 虽然这东西写个简单的列表推导式即可
+test :: (Num a, Enum a) => a -> [[a]]
+test n = [[1 .. i] | i <- [1 .. n]]
+-- 这里不写 Enum 会出事
+-- 理解加深了..
+
+-- flip 是标准库中的另一个函数，简单的取一个函数作为参数，返回一个效果相同的新函数
+-- 两个函数唯一的区别是 新函数的前两个参数和原先的函数前两个参数正好颠倒
+flip' :: (a -> b -> c) -> (b -> a -> c)
+flip' f = g
+  where g x y = f y x
+-- 注意，这里是在写函数 where 里面定义的 g
+
+-- flip' f y x = 
