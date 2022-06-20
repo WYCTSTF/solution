@@ -533,8 +533,8 @@ describelist' ls = "The list is " ++ what ls
 -----------------------------------------------}
 
 maximum' :: (Ord a) => [a] -> a
-maximum' [] = error "maximum of empty list"
-maximum' [x] = x
+maximum' []     = error "maximum of empty list"
+maximum' [x]    = x
 maximum' (x:xs) = max x (maximum' xs)
 
 -- 尝试写出自己的replicate
@@ -559,7 +559,7 @@ take' _ [] = []
 take' n (x:xs) = x : take' (n-1) xs
 
 reverse' :: [a] -> [a]
-reverse' [] = []
+reverse' []     = []
 reverse' (x:xs) = reverse' xs ++ [x]
 
 -- 这一个函数直接给我干懵了 别的过程式语言绝不可能写的如此狂野
@@ -567,8 +567,8 @@ repeat' :: a -> [a]
 repeat' x = x : repeat' x
 
 zip' :: [a] -> [b] -> [(a,b)]
-zip' _ [] = []
-zip' [] _ = []
+zip' _ []          = []
+zip' [] _          = []
 zip' (x:xs) (y:ys) = (x,y) : zip' xs ys -- 如此的自然！
 
 elem' :: (Eq a) => a -> [a] -> Bool
@@ -637,8 +637,8 @@ applyTwice f x = f (f x)
 -- 通过 截断 和 柯里化 能够言简意赅的做很多事情
 -- zipWith 也是标准库中一个很有用的函数
 zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
-zipWith' _ [] _ = []
-zipWith' _ _ [] = []
+zipWith' _ [] _          = []
+zipWith' _ _ []          = []
 zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
 -- 如果要用zipWith' 组合 (zipWith' (*))，该怎么做?
 -- 感觉有点抽象了..
@@ -655,9 +655,80 @@ test n = [[1 .. i] | i <- [1 .. n]]
 
 -- flip 是标准库中的另一个函数，简单的取一个函数作为参数，返回一个效果相同的新函数
 -- 两个函数唯一的区别是 新函数的前两个参数和原先的函数前两个参数正好颠倒
-flip' :: (a -> b -> c) -> (b -> a -> c)
+
+
+flip' :: (a -> b -> c) -> b -> a -> c
 flip' f = g
   where g x y = f y x
 -- 注意，这里是在写函数 where 里面定义的 g
 
--- flip' f y x = 
+map' :: (a -> b) -> [a] -> [b]
+map' _ []     = []
+map' f (x:xs) = f x : map' f xs
+
+-- 然后发现这些用列表推导式都能做 2333..
+-- map可以更易读，嵌套更方便
+
+-- filter 函数取一个谓词 和 一个列表 返回列表中所有符合条件的元素组成的列表
+-- 谓词 特指返回值为布尔值的函数
+
+filter' :: (a -> Bool) -> [a] -> [a]
+filter' _ [] = []
+filter' p (x:xs)
+  | p x = x : filter p xs
+  | otherwise = filter p xs
+
+qsort :: Ord a => [a] -> [a]
+qsort []     = []
+qsort (x:xs) = qsort (filter (<x) xs) ++ [x] ++ qsort (filter (>x) xs)
+-- 你们这个 Haskell 啊，不知道比 C++ 高到哪里去了
+
+-- 随机一个pivot 然后局部堆排，就可以实现STL之Haskell辣
+
+largestDivisible :: Integer
+largestDivisible = head (filter p [100000,99999..])
+  where p x = x `mod` 3829 == 0
+
+-- takeWhile 取一个谓词和一个列表作为参数 从头开始遍历列表 在元素仍符合谓词时返回元素
+-- 从名字上理解 take while 很显然
+
+-- 计算所有小于 10000 的奇数的平方的和
+-- sum (takeWhile (<10000) (filter odd (map (^2) [1..])))
+
+chain :: Integer -> [Integer]
+chain 1 = [1]
+chain x
+  | even x = x : chain (x `div` 2)
+  | otherwise = x : chain (x * 3 + 1)
+
+-- map 的操作同样适用于 currying
+-- ghci> let listOfFuns = map (*) [0..]
+-- ghci> (listOfFuns !! 4) 5
+-- 20
+
+------------------------------------
+------------- Lambda ---------------
+------------------------------------
+
+-- 一次性的匿名函数 这个和C++里面支持的赋值还不太一样
+-- 真 - 匿名函数
+-- 要声明一个lambda 就写一个 \ 后跟函数的参数列表 参数之间用空格分割，-> 后面是函数体 通常将整个 lambda 用括号括起来
+numLongChains :: Int
+numLongChains = length (filter (\xs -> length xs > 15) (map chain [1..100]))
+
+-- lambda滥用：
+-- 熟悉 currying 和 部分应用，避免 lambda 的滥用
+-- ghci> map (+3) [1,6,3,2]
+-- ghci> map (\x -> x + 3) [1,6,3,2]
+-- 这两者等价
+
+-- 多参数
+-- ghci> zipWith (\a b -> (a*30+3)/b) [5,4,3,2,1] [1,2,3,4,5]
+
+-- lambda 中可以使用模式匹配，但是不能为一个参数设置多个模式，而 lambda 的模式匹配失败，就会产生运行时错误
+-- ghci> map (\(a, b) -> a + b) [(1,2),{3,5),(6,3),(2,6),(2,5)]
+addThree' :: Int -> Int -> Int -> Int
+addThree' = \x -> \y -> \z -> x + y + z
+-- 很好的解释了 currying
+
+-- 改写 flip' 使得更容易理解
