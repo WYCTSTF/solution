@@ -732,3 +732,9 @@ addThree' = \x -> \y -> \z -> x + y + z
 -- 很好的解释了 currying
 
 -- 改写 flip' 使得更容易理解
+-- flip' :: (a -> b -> c) -> b -> a -> c
+-- flip' f = \x y -> f y 更好地表示了返回值是一个函数
+
+-- ghci> map (flip subtract 20) [1,2,3,4]
+-- [19,18,17,16]
+

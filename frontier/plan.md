@@ -29,5 +29,3 @@
 单调栈 单调队列 笛卡尔树
 
 ## 常见-简单-图论
-
-xy 的简单题 $\sum_k^n\lfloor\sqrt{k}\rfloor$

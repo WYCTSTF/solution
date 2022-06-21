@@ -1,22 +1,14 @@
-import java.util.HashSet;
+import java.io.*;
 
 public class test {
-  public static int get(int k) {
-    final long l = System.currentTimeMillis();
-    final int i = (int) (l % (long)(k) + 1);
-    return i;
-  }
+  public static void main(String[] args) throws Exception {
+    File file = new File("A_secret.txt");
+    FileOutputStream fos = new FileOutputStream(file);
 
-  public static void main(String[] args) {
-    HashSet<Integer>s = new HashSet<Integer>();
-    for (int i = 1; i <= 6; i++) {
-      int d = get(33);
-      while (s.contains(d)) {
-        d = get(33);
-      }
-      System.out.print(d + " ");
-      s.add(d);
-    }
-    System.out.print("+ "+get(16));
+    byte[] bytes1 = { -28, -67, -96, -26, -104, -81, -25, -116, -86, -27, -112, -89, 63 };
+
+    fos.write(bytes1);
+    fos.close();
+
   }
 }
