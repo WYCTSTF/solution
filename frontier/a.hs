@@ -738,3 +738,10 @@ addThree' = \x -> \y -> \z -> x + y + z
 -- ghci> map (flip subtract 20) [1,2,3,4]
 -- [19,18,17,16]
 
+sum' :: (Num a) => [a] -> a
+sum' xs = foldl (+) 0 xs
+
+-- 如果考虑函数的柯里化，就可以写得更简单
+-- sum' :: (Num a) => [a] -> a
+-- sum' = foldl (+) 0
+
