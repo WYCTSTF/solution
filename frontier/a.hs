@@ -747,7 +747,49 @@ sum' xs = foldl (+) 0 xs
 -- sum' :: (Num a) => [a] -> a
 -- sum' = foldl (+) 0
 
+-- 折叠函数 以 foldl 为例
+-- 一个折叠取一个 二元函数 一个初始值 一个待折叠的列表
+-- 折叠函数会取 初始值（累加值） 和 列表的起始元素来应用二元函数，得到返回值作为新的累加值
+
+-- 右折叠 的参数顺序和 左折叠也相反 先是列表当前值，然后是累加值
+-- 用右折叠实现 map 函数
 -- ++ 比 : 慢
 map'' :: (a -> b) -> [a] -> [b]
-map'' f xs = foldr (\x acc -> f x : acc) [] xs
+-- map'' f = foldr (\x acc -> f x : acc) []
 
+-- 用左折叠实现 map
+map'' f = foldl (\acc x -> acc ++ [f x]) []
+-- 此外，左折叠不能处理无限列表
+
+-- 使用右折叠实现 elem 函数
+elem'' :: (Eq a) => a -> [a] -> Bool
+elem'' el = foldr (\x acc -> (x == el) || acc ) False
+
+-- foldl1 和 foldr1函数无需提供初始值，它们假定列表的第一个元素（或者最后一个元素是初始值）
+-- 并从旁边的元素开始折叠
+maximum'' :: (Ord a) => [a] -> a
+maximum'' = foldl1 max
+
+-- 如果在处理列表时，理论上不会处理空列表，那么可以使用foldl1 & foldr1
+reverse'' :: [a] -> [a]
+reverse'' = foldl (flip (:)) []
+
+product'' :: (Num a) => [a] -> a
+product'' = foldl (*) 1
+
+filter'' :: (a -> Bool) -> [a] -> [a]
+filter'' p = foldr (\x acc -> if p x then x : acc else acc) []
+
+last' :: [a] -> a
+last' = foldl1 (\_ x -> x)
+
+-- 从另一个角度看折叠
+-- 假设有一个二元函数 f 初始累加值 z，对列表[3,4,5,6]进行右折叠 实际执行的是
+-- f 3 (f 4 (f 5 (f 6 z)))
+-- 将 f 代为 +，初始值代为 0 那么所做的就是
+-- 3 + (4 + (5 + (6 + 0)))
+-- 等价于
+-- (+) 3 ((+) 4 ((+) 5 ((+) 6 0)))
+-- 类似的 以 g 为二元函数 z为累加值 左折叠一个列表与下面的表达式等价
+-- g (g (g x 3) 4) 5) 6
+-- 如果令 flip (:) 为二元函数

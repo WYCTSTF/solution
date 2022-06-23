@@ -1,0 +1,49 @@
+[AC] CF1292B Aroma's Search
+CF1304C Air Conditioner
+CF1313D Happy New Year
+CF1322B Present
+CF1322C Instant Noodles
+CF1325D Ehab the Xorcist
+CF1338B Edge Weight Assignment
+CF1338C Perfect Triples
+CF1338D Nested Rubber Bands
+CF1349B Orac and Medians
+CF1355F Guess Divisors Count
+CF1379C Choosing flowers
+CF1379F1 Chess Strikes Back (easy version)
+CF1385D a-Good String
+CF1385F Removing Leaves
+CF1396B Stoned Game
+CF1396C Monster Invaders
+CF1401E Divide Square
+CF1401F Reverse and Swap
+CF1404C Fixed Point Removal
+CF1406D Three Sequences
+CF1406E Deleting Numbers
+CF1408D Searchlights
+CF1408E Avoid Rainbow Cycles
+CF1408F Two Different
+CF1408G Clusterization Counting
+CF1413C Perform Easily
+CF1415D XOR-gun
+CF1415E New Game Plus!
+CF1416B Make Them Equal
+CF1428D Bouncing Boomerangs
+CF1444C Team-Building
+CF1446C Xor Tree
+CF1458C Latin Square
+CF1491F Magnets
+CF1491G Switch and Flip
+CF1495E Qingshan and Daniel
+CF1500C Matrix Sorting
+CF1534E Lost Array
+CF1540B Tree Array
+CF1542B Plus and Multiply
+CF1542C Strange Function
+CF1548A Web of Lies
+CF1572B Xor of 3
+CF1579G Minimal Coverage
+CF1580B Mathematics Curriculum
+CF1582F2 Korney Korneevich and XOR (hard version)
+CF1583F Defender of Childhood Dreams
+CF1608D Dominoes
