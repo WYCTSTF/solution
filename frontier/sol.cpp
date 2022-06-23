@@ -1,3 +1,5 @@
+// 开始变得扭曲了..
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -32,5 +34,6 @@ typedef double db;
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a; }
 
 int main() {
+	
 	return 0;
 }
