@@ -1,4 +1,17 @@
 {
 	"java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m",
-	"editor.scrollBeyondLastLine": true
+	"editor.scrollBeyondLastLine": true,
+
+	"background.enabled": true,
+    "background.useDefault": false,
+    "background.customImages": [
+        // 双叶老婆
+        "file:///Users/syh/Documents/Graph/new.png",
+        // 九条可怜
+        // "file:///Users/syh/Documents/Graph/haskell2.jpg",
+        // 魈宝
+        // "file:///Users/syh/Documents/Graph/xiao1.jpg",
+        // Haskell
+        // "file:///Users/syh/Documents/Graph/haskell2.png",
+    ],
 }
