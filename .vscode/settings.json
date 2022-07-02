@@ -6,7 +6,10 @@
     "background.useDefault": false,
     "background.customImages": [
         // 双叶老婆
-        "file:///Users/syh/Documents/Graph/new.png",
+        // "file:///Users/syh/Documents/Graph/new.png",
+
+        "file:///Users/syh/Documents/Graph/shuangye1.png",
+        
         // 九条可怜
         // "file:///Users/syh/Documents/Graph/haskell2.jpg",
         // 魈宝
@@ -14,4 +17,19 @@
         // Haskell
         // "file:///Users/syh/Documents/Graph/haskell2.png",
     ],
+
+    "background.style": {
+        "content":"''",
+        "pointer-events":"none",
+        "position":"fixed",
+        "width":"100%",
+        "height":"100%",
+        "z-index":"99999",
+        "top":"0px",
+        "left":"0px",
+        "background-position": "center",
+        "background.repeat":"no-repeat",
+        "background-size":"cover", //图片大小为全屏
+        "opacity":0.2,
+    },
 }
