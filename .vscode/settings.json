@@ -8,7 +8,7 @@
         // 双叶老婆
         // "file:///Users/syh/Documents/Graph/new.png",
 
-        "file:///Users/syh/Documents/Graph/shuangye1.png",
+        "file:///Users/syh/Documents/Graph/shuangye2.png",
         
         // 九条可怜
         // "file:///Users/syh/Documents/Graph/haskell2.jpg",
@@ -32,4 +32,12 @@
         "background-size":"cover", //图片大小为全屏
         "opacity":0.2,
     },
+
+    // 顶边栏颜色
+    "workbench.statusBar.visible": false,
+    "workbench.view.alwaysShowHeaderActions": false,
+    "workbench.editor.showIcons": false,
+    "workbench.editor.showTabs": false,
+
+    "workbench.editor.tabCloseButton":"off",
 }
