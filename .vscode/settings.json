@@ -1,14 +1,14 @@
 {
 	"java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m",
-	"editor.scrollBeyondLastLine": true,
+	"editor.scrollBeyondLastLine": false,
 
 	"background.enabled": true,
     "background.useDefault": false,
     "background.customImages": [
         // 双叶老婆
-        // "file:///Users/syh/Documents/Graph/new.png",
-
-        "file:///Users/syh/Documents/Graph/shuangye2.png",
+        // "file:///Users/syh/Documents/Graph/shuangye2.png",
+        
+        "file:///Users/syh/Documents/Graph/new.png",
         
         // 九条可怜
         // "file:///Users/syh/Documents/Graph/haskell2.jpg",
@@ -33,11 +33,15 @@
         "opacity":0.2,
     },
 
-    // 顶边栏颜色
-    "workbench.statusBar.visible": false,
+    // 关掉显示 安静看老婆
+    "workbench.statusBar.visible": true,
     "workbench.view.alwaysShowHeaderActions": false,
     "workbench.editor.showIcons": false,
     "workbench.editor.showTabs": false,
-
     "workbench.editor.tabCloseButton":"off",
+
+    // 顶边栏颜色
+    "workbench.colorCustomizations": {
+        "titleBar.activeForeground": "#87ceeb"
+    },
 }
