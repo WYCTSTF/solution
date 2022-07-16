@@ -34,7 +34,7 @@
     },
 
     // 关掉显示 安静看老婆
-    "workbench.statusBar.visible": true,
+    "workbench.statusBar.visible": false,
     "workbench.view.alwaysShowHeaderActions": false,
     "workbench.editor.showIcons": false,
     "workbench.editor.showTabs": false,
