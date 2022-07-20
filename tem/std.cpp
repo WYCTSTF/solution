@@ -1,59 +1,80 @@
-#include<bits/stdc++.h>
-#define L(i, j, k) for(int i = (j); i <= (k); ++i)
-#define R(i, j, k) for(int i = (j); i >= (k); --i)
-#define ll long long
-#define sz(a) ((int) (a).size())
-#define vi vector < int >
-#define me(a, x) memset(a, x, sizeof(a))
-#define ull unsigned long long 
+#include <bits/stdc++.h>
 using namespace std;
-const int N = 1e6 + 7;
-int n, a[N], b[N];
-bool vis[N]; 
-int arr[N], tp;
-int ok[N], to[N];
-int cyc[N];
-int qwq[N], tot, ns;
-void mark(int c) {
-    L(i, 1, tot) {
-        int r = c % qwq[i];
-        if(cyc[qwq[i]] != -1 && cyc[qwq[i]] != r) ns = false;
-        cyc[qwq[i]] = r;
-    }
+void read() {}
+template <typename T, typename... Ts> inline void read(T &arg, Ts &...args) {
+  T x = 0, f = 1;
+  char c = getchar();
+  while (!isdigit(c)) {
+    if (c == '-')
+      f = -1;
+    c = getchar();
+  }
+  while (isdigit(c)) {
+    x = (x << 3) + (x << 1) + (c - '0');
+    c = getchar();
+  }
+  arg = x * f;
+  read(args...);
 }
-bool solve() {
-    tot = 0;
-    int xp = tp;
-    L(i, 2, xp) if(xp % i == 0) {
-        qwq[++tot] = i;
+const int N = 1e5 + 5, inf = 0x3f3f3f3f;
+int main() {
+#ifdef ONLINE_JUDGE
+  freopen("graph.in", "r", stdin);
+  freopen("graph.out", "w", stdout);
+#endif
+  int n, m, k;
+  read(n, m, k);
+  array<int, N> in;
+  array<vector<int>, N> e;
+  vector<pair<int, int>> edge;
+  for (int i = 1; i <= m; i++) {
+    int u, v;
+    read(u, v);
+    edge.emplace_back(u, v);
+  }
+  sort(edge.begin(), edge.end());
+  edge.resize(unique(edge.begin(), edge.end()) - edge.begin());
+  for (auto [u, v] : edge)
+    e[u].push_back(v), in[v]++;
+  set<int> se[2];
+  for (int i = 1; i <= n; i++)
+    if (!in[i])
+      se[0].insert(i);
+  vector<int> ans;
+
+  vector<pair<int, int>> res;
+  while (!se[0].empty() || !se[1].empty()) {
+    if (k && !se[0].empty()) {
+      if (se[1].empty()) {
+        se[1].insert(*se[0].rbegin());
+        se[0].erase(*se[0].rbegin());
+      }
+      while (!se[0].empty() && k) {
+        se[1].insert(*se[0].begin());
+        se[0].erase(*se[0].begin());
+        k--;
+      }
     }
-    L(i, 1, tp) ok[arr[i]] = i;
-    L(i, 1, tp) if(!ok[b[arr[i]]]) return false;
-    L(i, 1, tp) to[i] = ok[b[arr[i]]];
-    L(i, 1, tp) mark((to[i] - i + tp) % tp);
-    return true;
-}
-void Main() {
-    cin >> n;
-    L(i, 1, n) vis[i] = false, cyc[i] = -1;
-    L(i, 1, n) cin >> a[i];
-    L(i, 1, n) cin >> b[i];
-    ns = true;
-    L(i, 1, n) if(!vis[i]) {
-        tp = 0;
-        int u = i;
-        while(!vis[u]) arr[++tp] = u, vis[u] = true, u = a[u];
-        ns &= solve();
-        L(j, 1, tp) ok[arr[j]] = false;
-    }
-    if(ns) cout << "Yes\n";
-    else cout << "No\n";
-}
-int main () {
-    ios :: sync_with_stdio(false);
-    cin.tie(0); cout.tie(0);
-    int t;
-    cin >> t;
-    while(t--) Main();
-    return 0;
+    int u = inf;
+    if (!se[0].empty())
+      u = *se[0].begin();
+    if (!se[1].empty())
+      u = min(u, *se[1].rbegin());
+    if (se[1].find(u) != se[1].end()) {
+      se[1].erase(u);
+      if (!se[1].empty())
+        res.emplace_back(u, *se[1].rbegin()); // loop？
+    } else
+      se[0].erase(u);
+    ans.push_back(u);
+    for (auto v : e[u])
+      if (--in[v] == 0)
+        se[0].insert(v);
+  }
+  for (auto it : ans)
+    printf("%d ", it);
+  printf("\n%lu\n", res.size());
+  for (auto [u, v] : res)
+    printf("%d %d\n", u, v);
+  return 0;
 }

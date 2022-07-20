@@ -2,7 +2,7 @@
 	"java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m",
 	"editor.scrollBeyondLastLine": false,
 
-	"background.enabled": true,
+	"background.enabled": false,
     "background.useDefault": false,
     "background.customImages": [
         // 双叶老婆
