@@ -1,6 +1,6 @@
 {
 	"java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m",
-	"editor.scrollBeyondLastLine": false,
+	"editor.scrollBeyondLastLine": true,
 
 	"background.enabled": false,
     "background.useDefault": false,
@@ -42,6 +42,6 @@
 
     // 顶边栏颜色
     "workbench.colorCustomizations": {
-        "titleBar.activeForeground": "#87ceeb"
+        "titleBar.activeForeground": "#e9b636"
     },
 }
