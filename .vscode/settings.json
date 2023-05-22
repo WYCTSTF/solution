@@ -1,0 +1,34 @@
+{
+	"java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m",
+	"editor.scrollBeyondLastLine": true,
+
+    // 关掉显示 
+    "workbench.view.alwaysShowHeaderActions": false,
+    "workbench.editor.showIcons": false,
+    "workbench.editor.showTabs": true,
+    "workbench.editor.tabCloseButton":"off",
+
+    // 顶边栏颜色
+    "workbench.colorCustomizations": {
+        "titleBar.activeForeground": "#c25ef8"
+    },
+    
+    "workbench.colorTheme": "Community Material Theme Darker",
+    "editor.bracketPairColorization.enabled": false,
+    "editor.guides.highlightActiveBracketPair": true,
+    "editor.matchBrackets": "always",
+    "editor.guides.bracketPairs": false,
+    "editor.guides.bracketPairsHorizontal": "active",
+    "editor.tabSize": 2,
+    "workbench.activityBar.visible": false,
+    "terminal.integrated.drawBoldTextInBrightColors": true,
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "terminal.integrated.gpuAcceleration": "on",
+    "terminal.integrated.lineHeight": 1.1,
+    "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+    "terminal.integrated.tabs.defaultIcon": "terminal-tmux",
+    "terminal.integrated.tabs.defaultColor": null,
+    "terminal.integrated.smoothScrolling": true,
+    "terminal.integrated.splitCwd": "workspaceRoot",
+    "cmake.sourceDirectory": "${workspaceFolder}/.",
+}

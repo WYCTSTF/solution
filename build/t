@@ -1,0 +1,10 @@
+#!/opt/homebrew/bin/fish
+ninja > msg
+if grep FAILED msg
+	echo Compile Failed.
+	echo "##############################################################################################################################################"
+	cat msg
+else
+	echo Compile Success.
+	./sol
+end
