@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
 
+# if you want to use on mac
+# set(VCPKG_TARGET_TRIPLET arm64-osx)
 set(VCPKG_TARGET_TRIPLET "x64-linux")
+# vcpkg path
 include(/opt/vcpkg/scripts/buildsystems/vcpkg.cmake)
 
 project(sol)
