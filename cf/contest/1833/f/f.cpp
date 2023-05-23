@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
-// #ifdef LOCAL
-// #include <dbg.h>
-// #else
-// #define dbg(...) 42
-// #endif
+#ifdef LOCAL
+#include <dbg.h>
+#else
+#define dbg(...) 42
+#endif
 
 using i64 = long long;
 using u64 = unsigned long long;
