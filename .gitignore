@@ -1,4 +1,4 @@
 build/
 /sol.cc
-# /CMakeLists.txt
+/CMakeLists.txt
 .cache/
