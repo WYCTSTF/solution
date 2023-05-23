@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
-using i64=long long;
-
+using std::cin;
+using std::vector;
 struct DSU {
   std::vector<int> f,siz;
   DSU() {}
@@ -33,10 +33,34 @@ struct DSU {
 };
 void solve(){
   int n;
-  std::cin>>n;
-  std::vector<int>a(n);
+  cin>>n;
+  vector<int>a(n);
   for(int i=0;i<n;++i)
-    std::cin>>a[i],a[i]--;
+    cin>>a[i],a[i]--;
   DSU dsu(n);
-  
+  for(int i=0;i<n;++i)
+    dsu.merge(i,a[i]);
+  vector<int>e(n);
+  bool chain=false;
+  for(int i=0;i<n;++i)
+    if(a[a[i]]==i){
+      e[dsu.find(i)]=i;
+      chain=true;
+    }
+  int min=0,max=0;
+  for(int i=0;i<n;++i)
+    if(dsu.find(i)==i){
+      if(!e[i])
+        min++;
+      max++;
+    }
+  min+=chain;
+  std::cout<<min<<' '<<max<<'\n';
+}
+int main(){
+  int tt;cin>>tt;
+  while(tt--){
+    solve();
+  }
+  return 0;
 }
