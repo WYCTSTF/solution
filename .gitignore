@@ -1,2 +1,0 @@
-# ignore build directory, which is not common across platforms.
-build/
