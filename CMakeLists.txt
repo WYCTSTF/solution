@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.5)
 
-set(VCPKG_TARGET_TRIPLET arm64-osx)
-include(/Users/syh/vcpkg/scripts/buildsystems/vcpkg.cmake)
+set(VCPKG_TARGET_TRIPLET "x64-linux")
+include(/opt/vcpkg/scripts/buildsystems/vcpkg.cmake)
 
 project(sol)
 
-set(CMAKE_CXX_COMPILER /opt/homebrew/opt/llvm/bin/clang++)
+set(CMAKE_CXX_COMPILER /usr/bin/clang++)
 # set(CMAKE_CXX_COMPILER /usr/local/bin/icc)
 
 set(CMAKE_CXX_STANDARD 17)
