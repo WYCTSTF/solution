@@ -14,12 +14,12 @@ set(CMAKE_CXX_COMPILER /opt/homebrew/opt/llvm/bin/clang++)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_compile_options(-DLOCAL -DDBG_MACRO_NO_WARNING)
 # add_compile_options(-fno-elide-constructors)
 set (CMAKE_CXX_COMPILE_FLAGS "-fsanitize=address")
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_executable(sol sol.cc)
 
 find_path(DBG_MACRO_INCLUDE_DIRS "dbg.h")
