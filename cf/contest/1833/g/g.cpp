@@ -26,6 +26,33 @@ typedef std::pair<int,int> PII;
 
 i64 gcd(i64 a,i64 b) { return b?gcd(b,a%b):a; }
 
+void solve() {
+  VI ans;
+  int n;cin>>n;
+  std::vector<std::vector<PII>>e(n+1);
+  for(int i=1,u,v;i<n;++i){
+    cin>>u>>v;
+    e[u].pb({v,i});
+    e[v].pb({u,i});
+  }
+  VI siz(n+1);
+  std::function<bool(int,int)> dfs=[&](int u,int fa){
+    siz[u]=1;
+    for(auto &[v,pid]:e[u]){
+      if(v==fa)
+        continue;
+      if(!dfs(v,u))return false;
+      if(siz[v]==3)ans.pb(pid);
+    }
+    return siz[u]<=3;
+  };
+}
+
 int main() {
+	int tt;
+	cin >> tt;
+	while (tt--) {
+		solve();
+	}
   return 0;
 }
