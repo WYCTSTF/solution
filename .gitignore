@@ -3,3 +3,7 @@ build/
 .cache/
 /CMakeLists.txt
 /.DS_store
+/in
+/out
+/stdout
+/sol
