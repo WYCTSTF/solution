@@ -36,6 +36,12 @@ void solve(){
   std::vector<PII>_;
   for(auto &i:b)_.pb(std::move(i));
   dbg(_);
+  sort(all(_));
+  for(int i=0;i<sz(_);++i){
+    int j=i;
+    while(j+1<sz(_)&&_[j+1].fi==_[j].fi+1)
+      ++j;
+  }
 }
 
 int main(){
