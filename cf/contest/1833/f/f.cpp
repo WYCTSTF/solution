@@ -37,7 +37,9 @@ void solve() {
     _.pb(std::move(x));
   sort(all(_));
   int ans=0;
-  for (int i=0;i<sz(_.size());++i)
+  for(int i=0;i<sz(_);++i){
+    
+  }
 }
 
 int main() {
