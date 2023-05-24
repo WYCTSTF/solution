@@ -2,3 +2,4 @@ build/
 /sol.cc
 .cache/
 /CMakeLists.txt
+/.DS_store
