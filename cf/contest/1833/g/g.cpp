@@ -43,9 +43,17 @@ void solve() {
         continue;
       if(!dfs(v,u))return false;
       if(siz[v]==3)ans.pb(pid);
+      else siz[u]+=siz[v];
     }
     return siz[u]<=3;
   };
+  if (!dfs(1,-1)||siz[1]!=3){
+    cout<<-1<<'\n';
+    return;
+  }
+  cout<<sz(ans)<<'\n';
+  for(int&i:ans)cout<<i<<' ';
+  cout<<'\n';
 }
 
 int main() {
