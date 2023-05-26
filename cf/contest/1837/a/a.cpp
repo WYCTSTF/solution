@@ -27,8 +27,12 @@ typedef std::pair<int,int> PII;
 i64 gcd(i64 a,i64 b) { return b?gcd(b,a%b):a; }
 
 int main() {
-  int n,q;
-  cin>>n>>q;
-  
+  int tt;
+  cin>>tt;
+  while(tt--){
+    int n,k;cin>>n>>k;
+    if(n%k)cout<<1<<'\n'<<n<<'\n';
+    else cout<<2<<'\n'<<n-1<<" 1\n";
+  }
   return 0;
 }

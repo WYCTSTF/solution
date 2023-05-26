@@ -26,9 +26,21 @@ typedef std::pair<int,int> PII;
 
 i64 gcd(i64 a,i64 b) { return b?gcd(b,a%b):a; }
 
-int main() {
-  int n,q;
-  cin>>n>>q;
-  
+int main(){
+  int tt;
+  cin>>tt;
+  while(tt--){
+    int n;
+    cin>>n;
+    int ans=1;
+    std::string ss;
+    cin>>ss;
+    int tem=1;
+    for(int i=1;i<sz(ss);++i)
+      if(ss[i]==ss[i-1])
+        tem++,ans=std::max(tem,ans);
+      else tem=1;
+    cout<<ans+1<<'\n';
+  }
   return 0;
 }
