@@ -25,3 +25,13 @@ typedef std::vector<int> VI;
 typedef std::pair<int,int> PII;
 
 i64 gcd(i64 a,i64 b) { return b?gcd(b,a%b):a; }
+
+int main() {
+  int tt;
+  cin>>tt;
+  while(tt--){
+    int n,m;
+    cin>>n>>m;
+  }
+  return 0;
+}

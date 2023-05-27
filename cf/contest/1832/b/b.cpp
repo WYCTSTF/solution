@@ -1,47 +1,21 @@
-#include <bits/stdc++.h>
-
-#ifdef LOCAL
-#include <dbg.h>
-#else
-#define dbg(...) 42
-#endif
-
-using i64 = long long;
-using u64 = unsigned long long;
-using u32 = unsigned int;
-using db = double;
-
-using std::cin, std::cout;
-
-#define rep(i,a,n) for(int i=a;i<=n;i++)
-#define per(i,a,n) for(int i=n;i>=a;i--)
-#define pb push_back
-#define fi first
-#define se second
-#define pi acos(-1)
-#define sz(x) ((int)(x).size())
-#define all(x) x.begin(),x.end()
-typedef std::vector<int> VI;
-typedef std::pair<int,int> PII;
-
-i64 gcd(i64 a,i64 b) { return b?gcd(b,a%b):a; }
-
+#include<bits/stdc++.h>
+using i64=long long;
+using std::cin,std::cout;
 void solve(){
-  int n,k;cin>>n>>k;
-  std::vector<i64>a(n),sum(n);
-  for(auto &x:a)cin>>x;
-  sort(all(a));
-  std::partial_sum(all(a),sum.begin());
-  dbg(a);
-  dbg(sum);
-  cout<<sum.back()-sum[k*2-1]<<'\n';
+  int n,k;
+  cin>>n>>k;
+  std::vector<i64>a(n),s(n);
+  for(i64&x:a)cin>>x;
+  sort(a.begin(),a.end());
+  std::partial_sum(a.begin(),a.end(),s.begin());
+  i64 ans=s[n-1]-s[2*k-1];
+  for(int j=1;j<k;++j)
+    ans=std::max(ans,s[n-j-1]-s[2*(k-j)-1]);
+  ans=std::max(ans,s[n-k-1]);
+  cout<<ans<<'\n';
 }
-
 int main(){
-  int tt;
-  cin>>tt;
-  while(tt--){
-    solve();
-  }
+  int tt;cin>>tt;
+  while(tt--)solve();
   return 0;
 }
