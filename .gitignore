@@ -1,10 +1,8 @@
 build/
-/sol.cc
 .cache/
 /CMakeLists.txt
 /.DS_store
 /in
 /out
 /stdout
-/sol
-/sol.py
+/sol*
