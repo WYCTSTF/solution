@@ -1,23 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
-void solve() {
-  long double m, x, a, b;
-  cin >> m >> x >> a >> b;
-  while (m >= x) {
-    if ((b - 1.0l) * x >= a || b == 0)
-      a += x;
-    else
-      b--;
-    m -= x;
-  }
-  a += m;
-  printf("%.7Lf\n", a / (a + b));
+void solve(){
+  int m,x,a,b;
+  double _m, _x, _a, _b;
+
 }
 int main() {
   int tt;
-  cin >> tt;
-  while (tt--) {
-    solve();
+  cin>>tt;
+  while(tt--){
+
   }
   return 0;
 }

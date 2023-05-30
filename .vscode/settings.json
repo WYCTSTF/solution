@@ -20,7 +20,7 @@
     "editor.guides.bracketPairs": false,
     "editor.guides.bracketPairsHorizontal": "active",
     "editor.tabSize": 2,
-    "workbench.activityBar.visible": false,
+    "workbench.activityBar.visible": true,
     "terminal.integrated.drawBoldTextInBrightColors": true,
     "terminal.integrated.fontFamily": "Hack Nerd Font",
     "terminal.integrated.gpuAcceleration": "on",
