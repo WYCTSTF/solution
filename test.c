@@ -7,7 +7,7 @@ int n, m;
 int x, y;
 int a[N], lg[N] = {-1}, f[N][lgN];
 
-inline int read()
+int read()
 {
     int x = 0, f = 1;
     char ch = getchar();
@@ -18,7 +18,7 @@ inline int read()
     return x * f;
 }
 
-inline int max(int a, int b) {
+int max(int a, int b) {
   return a > b ? a : b;
 }
 
@@ -36,7 +36,7 @@ int main()
     {
         x = read(), y = read();
         int k = lg[y - x + 1];
-      printf("%d\n", max(f[x][k], f[y - (1 << k) + 1][k]));
+        printf("%d\n", max(f[x][k], f[y - (1 << k) + 1][k]));
     }
     return 0;
 }
