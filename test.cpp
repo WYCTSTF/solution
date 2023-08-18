@@ -1,9 +1,9 @@
-#include "testlib.h"
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
-
-int main(int argc, char* argv[]) {
-  int a, b;
-  cin >> a >> b;
+int main() {
+  if (system("diff out stdout"))
+    cout << "fuck\n";
+  else
+    cout << "fuckyou\n";
+  return 0;
 }
