@@ -1,9 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <iostream>
 int main() {
-  if (system("diff out stdout"))
-    cout << "fuck\n";
-  else
-    cout << "fuckyou\n";
-  return 0;
+  std::cout << (1 + 2 == 3) << '\n';
 }

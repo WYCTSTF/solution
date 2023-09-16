@@ -16,7 +16,6 @@ using PII = std::pair<int, int>;
 
 #define rep(i,a,n) for(int i=a;i<=n;i++)
 #define per(i,a,n) for(int i=n;i>=a;i--)
-#define pb push_back
 #define fi first
 #define se second
 #define pi acos(-1)
@@ -25,42 +24,38 @@ using PII = std::pair<int, int>;
 
 i64 gcd(i64 a,i64 b) { return b?gcd(b,a%b):a; }
 
-void solve() {
-  int n,m,d;cin>>n>>m>>d;
-  vector<int>p;int las=1,pos;bool flag=false;
-  int ans=1;
-  map<int,int>mp;
-  rep(i,1,m){
-    int tem;cin>>tem;
-    mp[tem]=i;
-    if(tem-las<d && tem - las >= 1&&!flag){
-      flag=true;
-      pos=tem;
-    }else{
-      p.pb(tem);
-    }
-  }
-  if(!flag){
-    pos = p[m];
-    p.pop_back();
-  }
-  debug(p);
-  for(int now:p){
-    ans++;
-    ans+=(now-las-1)/d;
-    las=now;
-  }
-  ans+=(n-las)/d;
-  cout<<ans<<' '<<mp[pos]<<'\n';
-}
-
 int main() {
   cin.tie(nullptr)->sync_with_stdio(false);
   int tt;
   cin >> tt;
-
   while (tt--) {
-    solve();
+    int n, m, d;
+    cin >> n >> m >> d;
+    vector<int> a(m + 1);
+    for (int i = 1; i <= m; ++i)
+      cin >> a[i];
+    a[0] = 1;
+    a.push_back(n + 1);
+
+    auto calc = [&](int x) {
+      return max(0, x / d);
+    };
+    int sum = m + (a[1] != 1);
+    for (int i = 1; i <= m + 1; ++i)
+      sum += calc(a[i] - a[i - 1] - 1);
+    int mn = sum, tot = 0;
+    for (int i = 1; i <= m; ++i) {
+      int now = sum;
+      if (a[i] != 1) {
+        now -= calc(a[i] - a[i - 1] - 1) + calc(a[i + 1] - a[i] - 1) + 1;
+        now += calc(a[i + 1] - a[i - 1] - 1);
+      }
+      if (now < mn) {
+        mn = now;
+        tot = 1;
+      } else if (now == mn)
+        tot++;
+    }
+    cout << mn << ' ' << tot << '\n';
   }
-  return 0;
 }

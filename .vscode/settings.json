@@ -13,7 +13,7 @@
         "titleBar.activeForeground": "#c25ef8"
     },
     
-    "workbench.colorTheme": "Community Material Theme Darker",
+    "workbench.colorTheme": "Atom One Light",
     "editor.bracketPairColorization.enabled": false,
     "editor.guides.highlightActiveBracketPair": true,
     "editor.matchBrackets": "always",
