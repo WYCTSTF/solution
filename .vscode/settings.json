@@ -5,7 +5,7 @@
     // 关掉显示 
     "workbench.view.alwaysShowHeaderActions": false,
     "workbench.editor.showIcons": false,
-    "workbench.editor.showTabs": true,
+    "workbench.editor.showTabs": "multiple",
     "workbench.editor.tabCloseButton":"off",
 
     // 顶边栏颜色
@@ -20,7 +20,6 @@
     "editor.guides.bracketPairs": false,
     "editor.guides.bracketPairsHorizontal": "active",
     "editor.tabSize": 2,
-    "workbench.activityBar.visible": false,
     "terminal.integrated.drawBoldTextInBrightColors": true,
     "terminal.integrated.fontFamily": "Hack Nerd Font",
     "terminal.integrated.gpuAcceleration": "on",
@@ -30,6 +29,7 @@
     "terminal.integrated.tabs.defaultColor": null,
     "terminal.integrated.smoothScrolling": true,
     "terminal.integrated.splitCwd": "workspaceRoot",
-    "cmake.sourceDirectory": "/Users/syh/solution/",
+    "cmake.sourceDirectory": "/Users/syh/solution/src",
     "cmake.cmakePath": "cmake",
+    "workbench.activityBar.location": "hidden",
 }
