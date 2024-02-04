@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "7d5e17182f003cda",
+        "id": "947109a9b8d6ead1",
         "type": "tabs",
         "children": [
           {
-            "id": "1e14b5c6df162326",
+            "id": "20f72949193522b5",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -146,7 +146,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "1e14b5c6df162326",
+  "active": "4cc4b3369be44d75",
   "lastOpenFiles": [
     "note/asm - x86 & arm.md",
     "note"
