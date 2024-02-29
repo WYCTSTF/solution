@@ -415,6 +415,11 @@ CMakeFiles/sol.dir/sol.cpp.o
  /opt/homebrew/opt/llvm/include/c++/v1/__bit/popcount.h
  /opt/homebrew/opt/llvm/include/c++/v1/__bit/rotate.h
  /opt/homebrew/opt/llvm/include/c++/v1/__bit_reference
+ /opt/homebrew/opt/llvm/include/c++/v1/__charconv/tables.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__charconv/to_chars_base_10.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__charconv/to_chars_integral.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__charconv/to_chars_result.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__charconv/traits.h
  /opt/homebrew/opt/llvm/include/c++/v1/__chrono/convert_to_timespec.h
  /opt/homebrew/opt/llvm/include/c++/v1/__chrono/duration.h
  /opt/homebrew/opt/llvm/include/c++/v1/__chrono/high_resolution_clock.h
@@ -466,7 +471,23 @@ CMakeFiles/sol.dir/sol.cpp.o
  /opt/homebrew/opt/llvm/include/c++/v1/__exception/nested_exception.h
  /opt/homebrew/opt/llvm/include/c++/v1/__exception/operations.h
  /opt/homebrew/opt/llvm/include/c++/v1/__exception/terminate.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/buffer.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/concepts.h
  /opt/homebrew/opt/llvm/include/c++/v1/__format/enable_insertable.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/extended_grapheme_cluster_table.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/format_arg.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/format_error.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/format_fwd.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/format_parse_context.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/format_string.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/format_to_n_result.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/formatter.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/formatter_bool.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/formatter_integral.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/formatter_output.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/parser_std_format_spec.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/unicode.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__format/width_estimation_table.h
  /opt/homebrew/opt/llvm/include/c++/v1/__functional/binary_function.h
  /opt/homebrew/opt/llvm/include/c++/v1/__functional/hash.h
  /opt/homebrew/opt/llvm/include/c++/v1/__functional/identity.h
@@ -555,6 +576,7 @@ CMakeFiles/sol.dir/sol.cpp.o
  /opt/homebrew/opt/llvm/include/c++/v1/__memory/raw_storage_iterator.h
  /opt/homebrew/opt/llvm/include/c++/v1/__memory/shared_ptr.h
  /opt/homebrew/opt/llvm/include/c++/v1/__memory/swap_allocator.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__memory/temp_value.h
  /opt/homebrew/opt/llvm/include/c++/v1/__memory/temporary_buffer.h
  /opt/homebrew/opt/llvm/include/c++/v1/__memory/uninitialized_algorithms.h
  /opt/homebrew/opt/llvm/include/c++/v1/__memory/unique_ptr.h
@@ -585,6 +607,7 @@ CMakeFiles/sol.dir/sol.cpp.o
  /opt/homebrew/opt/llvm/include/c++/v1/__ranges/size.h
  /opt/homebrew/opt/llvm/include/c++/v1/__ranges/subrange.h
  /opt/homebrew/opt/llvm/include/c++/v1/__ranges/view_interface.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__split_buffer
  /opt/homebrew/opt/llvm/include/c++/v1/__std_mbstate_t.h
  /opt/homebrew/opt/llvm/include/c++/v1/__string/char_traits.h
  /opt/homebrew/opt/llvm/include/c++/v1/__string/constexpr_c_functions.h
@@ -716,6 +739,7 @@ CMakeFiles/sol.dir/sol.cpp.o
  /opt/homebrew/opt/llvm/include/c++/v1/__type_traits/is_void.h
  /opt/homebrew/opt/llvm/include/c++/v1/__type_traits/is_volatile.h
  /opt/homebrew/opt/llvm/include/c++/v1/__type_traits/lazy.h
+ /opt/homebrew/opt/llvm/include/c++/v1/__type_traits/make_32_64_or_128_bit.h
  /opt/homebrew/opt/llvm/include/c++/v1/__type_traits/make_const_lvalue_ref.h
  /opt/homebrew/opt/llvm/include/c++/v1/__type_traits/make_signed.h
  /opt/homebrew/opt/llvm/include/c++/v1/__type_traits/make_unsigned.h
@@ -767,6 +791,7 @@ CMakeFiles/sol.dir/sol.cpp.o
  /opt/homebrew/opt/llvm/include/c++/v1/__variant/monostate.h
  /opt/homebrew/opt/llvm/include/c++/v1/__verbose_abort
  /opt/homebrew/opt/llvm/include/c++/v1/algorithm
+ /opt/homebrew/opt/llvm/include/c++/v1/array
  /opt/homebrew/opt/llvm/include/c++/v1/atomic
  /opt/homebrew/opt/llvm/include/c++/v1/bit
  /opt/homebrew/opt/llvm/include/c++/v1/bitset
@@ -821,6 +846,7 @@ CMakeFiles/sol.dir/sol.cpp.o
  /opt/homebrew/opt/llvm/include/c++/v1/typeinfo
  /opt/homebrew/opt/llvm/include/c++/v1/utility
  /opt/homebrew/opt/llvm/include/c++/v1/variant
+ /opt/homebrew/opt/llvm/include/c++/v1/vector
  /opt/homebrew/opt/llvm/include/c++/v1/version
  /opt/homebrew/opt/llvm/include/c++/v1/wchar.h
  /opt/homebrew/opt/llvm/include/c++/v1/wctype.h

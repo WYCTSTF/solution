@@ -1,9 +1,1 @@
-build/
-.cache/
-src/
-/CMakeLists.txt
 /.DS_store
-/in
-/out
-/stdout
-/sol*
