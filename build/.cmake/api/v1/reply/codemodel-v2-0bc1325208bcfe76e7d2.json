@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.5"
@@ -20,7 +20,7 @@
 					]
 				}
 			],
-			"name" : "",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -41,14 +41,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "run::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-run-0d75f0209c4cb58d4933.json",
+					"jsonFile" : "target-run-Debug-2ba41616a80c426000b1.json",
 					"name" : "run",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "sol::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-sol-22311d36f5b462ba1ef7.json",
+					"jsonFile" : "target-sol-Debug-0fe4b04dbec30fc576a9.json",
 					"name" : "sol",
 					"projectIndex" : 0
 				}
@@ -58,7 +58,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/syh/solution",
+		"build" : "/Users/syh/solution/build",
 		"source" : "/Users/syh/solution"
 	},
 	"version" : 

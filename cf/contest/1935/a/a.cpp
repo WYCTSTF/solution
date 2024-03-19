@@ -1,33 +1,17 @@
 #include <bits/stdc++.h>
+using namespace std;
 void solve() {
   int n;
-  std::cin >> n;
-  std::string s;
-  std::cin >> s;
-  int l = 0, r = s.size() - 1;
-  while (l < r && s[l] == s[r]) l++, r--;
-  int tag = 1;
-  if (l < r && s[l] > s[r]) tag = 0;
-  if (tag) {
-    std::cout << s;
-    if (n % 2) {
-      std::reverse(s.begin(), s.end());
-      std::cout << s;
-    }
-    std::cout << '\n';
-  } else {
-    std::reverse(s.begin(), s.end());
-    std::cout << s;
-    if (n % 2 == 0) {
-      std::reverse(s.begin(), s.end());
-      std::cout << s;
-    }
-    std::cout << '\n';
-  }
+  cin >> n;
+  string s;
+  cin >> s;
+  string rs = s;
+  reverse(rs.begin(), rs.end());
+  cout << min({rs + s, s + rs , s}) << '\n';
 }
 int main() {
   int tt;
-  std::cin >> tt;
+  cin >> tt;
   while (tt--) {
     solve();
   }

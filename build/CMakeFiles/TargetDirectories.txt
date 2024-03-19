@@ -1,0 +1,4 @@
+/Users/syh/solution/build/CMakeFiles/sol.dir
+/Users/syh/solution/build/CMakeFiles/run.dir
+/Users/syh/solution/build/CMakeFiles/edit_cache.dir
+/Users/syh/solution/build/CMakeFiles/rebuild_cache.dir

@@ -20,6 +20,8 @@ include_directories(/Users/syh/solution/header)
 add_compile_options(-DLOCAL -DDBG_MACRO_NO_WARNING)
 # add_compile_options(-fno-elide-constructors)
 
+set(CMAKE_CXX_COMPILE_FLAGS "-fsanitize=address -g")
+
 set(SHELL /opt/homebrew/bin/bash)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -28,7 +30,6 @@ add_executable(sol ./sol.cpp)
 add_custom_target(run COMMAND ${CMAKE_COMMAND} -E chdir
                               ${CMAKE_CURRENT_BINARY_DIR} ./sol < ./in > ./out)
 
-set(CMAKE_CXX_COMPILE_FLAGS "-fsanitize=address -g")
 
 # find_path(DBG_MACRO_INCLUDE_DIRS "dbg.h") target_include_directories(sol
 # PRIVATE ${DBG_MACRO_INCLUDE_DIRS})
