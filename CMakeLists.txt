@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
 
 # if you want to use on mac
-set(VCPKG_TARGET_TRIPLET arm64-osx)
+# set(VCPKG_TARGET_TRIPLET arm64-osx)
 # set(VCPKG_TARGET_TRIPLET "x64-linux") vcpkg path
-include(~/vcpkg/scripts/buildsystems/vcpkg.cmake)
+# include(~/vcpkg/scripts/buildsystems/vcpkg.cmake)
 
 project(sol)
 
@@ -14,7 +14,7 @@ set(CMAKE_CXX_COMPILER /opt/homebrew/opt/llvm/bin/clang++)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-include_directories(/Users/syh/solution/header)
+include_directories(/home/syh/solution/header)
 # include_directories(/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include)
 
 add_compile_options(-DLOCAL -DDBG_MACRO_NO_WARNING)
@@ -22,7 +22,7 @@ add_compile_options(-DLOCAL -DDBG_MACRO_NO_WARNING)
 
 set(CMAKE_CXX_COMPILE_FLAGS "-fsanitize=address -g")
 
-set(SHELL /opt/homebrew/bin/bash)
+# set(SHELL /opt/homebrew/bin/bash)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_executable(sol ./sol.cpp)
