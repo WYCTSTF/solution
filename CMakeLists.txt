@@ -21,15 +21,12 @@ add_compile_options(-DLOCAL -DDBG_MACRO_NO_WARNING)
 # add_compile_options(-fno-elide-constructors)
 
 add_compile_options(-fsanitize=address -g)
+add_link_options(-fsanitize=address)
 
 # set(SHELL /opt/homebrew/bin/bash)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-add_executable(sol ./sol.cpp)
-
-add_custom_target(run COMMAND ${CMAKE_COMMAND} -E chdir
-                              ${CMAKE_CURRENT_BINARY_DIR} ./sol < ./in > ./out)
-
+add_executable(sol ./src/sol.cpp)
 
 # find_path(DBG_MACRO_INCLUDE_DIRS "dbg.h") target_include_directories(sol
 # PRIVATE ${DBG_MACRO_INCLUDE_DIRS})
