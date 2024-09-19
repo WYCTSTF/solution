@@ -1,1 +1,0 @@
-/opt/homebrew/opt/llvm/bin/clang++ CMakeFiles/sol.dir/sol.cpp.o -o sol 
