@@ -3,3 +3,6 @@ CMakeFiles/
 /.cache
 /build
 *.dSYM
+/.vscode
+/.obsidian
+/.cmake
