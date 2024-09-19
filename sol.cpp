@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <iostream>
 #include <string>
 #include <vector>
@@ -73,5 +74,11 @@ int main() {
       }
     }
   cout << mx << '\n';
+=======
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+
+>>>>>>> 386489f6e35994f5096d6d085ba8986179e1dca1
   return 0;
 }
