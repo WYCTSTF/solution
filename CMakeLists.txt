@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.5)
 
 project(sol)
 
-set(CMAKE_CXX_COMPILER /opt/homebrew/opt/llvm/bin/clang++)
+set(CMAKE_CXX_COMPILER /home/syh/clang+llvm-18.1.8-aarch64-linux-gnu/bin/clang++)
 # set(CMAKE_CXX_COMPILER /usr/bin/clang++) set(CMAKE_CXX_COMPILER
 # /usr/local/bin/icc)
 
@@ -20,7 +20,7 @@ include_directories(/home/syh/solution/header)
 add_compile_options(-DLOCAL -DDBG_MACRO_NO_WARNING)
 # add_compile_options(-fno-elide-constructors)
 
-set(CMAKE_CXX_COMPILE_FLAGS "-fsanitize=address -g")
+add_compile_options(-fsanitize=address -g)
 
 # set(SHELL /opt/homebrew/bin/bash)
 
