@@ -29,7 +29,7 @@
     "terminal.integrated.tabs.defaultColor": null,
     "terminal.integrated.smoothScrolling": true,
     "terminal.integrated.splitCwd": "workspaceRoot",
-    "cmake.sourceDirectory": "/Users/syh/solution",
+    "cmake.sourceDirectory": "D:/solution",
     "cmake.cmakePath": "cmake",
     "workbench.activityBar.location": "hidden",
     "workbench.editor.tabActionCloseVisibility": false,
