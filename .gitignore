@@ -1,1 +1,8 @@
-/.DS_store
+**/.DS_store
+CMakeFiles/
+/.cache
+/build
+*.dSYM
+/.vscode
+/.obsidian
+/.cmake

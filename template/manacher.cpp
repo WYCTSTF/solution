@@ -1,29 +1,19 @@
-#include <algorithm>
-#include <iostream>
-#include <string>
-#include <vector>
-int main() {
-  std::string s;
-  std::cin >> s;
+pair<vector<int>, vector<int>> manacher(string s) {
   int n = s.size();
-  std::vector<int> d1(n), d2(n);
+  vector<int> d1(n), d2(n);
+  int ans = 0;
   for (int i = 0, l = 0, r = -1; i < n; ++i) {
-    int k = (i > r) ? 1 : std::min(d1[l + r - i], r - i + 1);
-    while (0 <= i - k && i + k < n && s[i - k] == s[i + k])
-      ++k;
-    d1[i] = k--;
-    if (i + k > r)
-      l = i - k, r = i + k;
+    int len = (i > r) ? 1 : min(r - i + 1, d1[l + r - i]);
+    while (i - len >= 0 && i + len < n && s[i - len] == s[i + len]) ++len;
+    d1[i] = len;
+    if (r < i + len - 1) r = i + len - 1, l = i - len + 1;
   }
   for (int i = 0, l = 0, r = -1; i < n; ++i) {
-    int k = (i > r) ? 0 : std::min(d2[r + l - i + 1], r - i + 1);
-    while (0 <= i - k - 1 && i + k < n && s[i - k - 1] == s[i + k])
-      ++k;
-    d2[i] = k--;
-    if (i + k > r) {
-      l = i - k - 1;
-      r = i + k;
-    }
+    int len = (i > r) ? 0 : min(r - i + 1, d2[l + r - i + 1]);
+    while (i - len - 1 >= 0 && i + len < n && s[i - len - 1] == s[i + len])
+      ++len;
+    d2[i] = len;
+    if (r < i + len - 1) r = i + len - 1, l = i - len;
   }
-  return 0;
+  return {d1, d2};
 }
