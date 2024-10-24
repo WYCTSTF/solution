@@ -20,6 +20,8 @@ int main() {
     for (int i = 2; i * i <= sum; ++i)
       if (sum % i == 0)
         v.insert(i), v.insert(sum / i);
+    v.insert(0);
+    v.insert(1);
     auto check = [&](int k) -> bool {
       int sum = 0;
       for (char c : s) { 
@@ -33,6 +35,7 @@ int main() {
     };
     bool fl = false;
     for (auto i : v) {
+      dbg(i);
       if (check(i)) {
         fl = true;
         break;

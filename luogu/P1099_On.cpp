@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
+using namespace std;
 #ifdef LOCAL
 #include"algo/debug.h"
 #else
 #define dbg(...) 114514
 #endif
-using namespace std;
 using i64=long long;
 const int N=500010;
 vector<pair<int,int>>adj[N];
