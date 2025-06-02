@@ -1,15 +1,18 @@
 cmake_minimum_required(VERSION 3.20)
 
-set(CMAKE_C_COMPILER "D:/mingw64/bin/gcc.exe")
-set(CMAKE_CXX_COMPILER "D:/mingw64/bin/g++.exe")
+if(WIN32)
+  set(CMAKE_C_COMPILER "D:/Program Files/llvm-mingw-20250528-ucrt-x86_64/bin/clang.exe")
+  set(CMAKE_CXX_COMPILER "D:/Program Files/llvm-mingw-20250528-ucrt-x86_64/bin/clang++.exe")
+endif()
 
 project(sol)
-
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-include_directories("D:/solution/header")
+if(WIN32)
+  include_directories("D:/project/solution/header")
+endif()
 
 add_compile_options(-DLOCAL -DDBG_MACRO_NO_WARNING)
 
