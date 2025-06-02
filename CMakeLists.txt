@@ -10,9 +10,7 @@ project(sol)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-if(WIN32)
-  include_directories("D:/project/solution/header")
-endif()
+include_directories("${PROJECT_SOURCE_DIR}/header")
 
 add_compile_options(-DLOCAL -DDBG_MACRO_NO_WARNING)
 
