@@ -1,15 +1,15 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.20)
+
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+set(CMAKE_C_COMPILER "/opt/homebrew/opt/llvm/bin/clang")
+set(CMAKE_CXX_COMPILER "/opt/homebrew/opt/llvm/bin/clang++")
 
 project(sol)
 
-set(CMAKE_C_COMPILER /Users/syh/llvm18.1.8/bin/clang)
-set(CMAKE_CXX_COMPILER /Users/syh/llvm18.1.8/bin/clang++)
-
-
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-
-include_directories(/Users/syh/solution/header)
+include_directories(header)
 
 add_compile_options(-DLOCAL -DDBG_MACRO_NO_WARNING)
 
